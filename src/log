@@ -1,0 +1,74 @@
+john@punkoff:~/Projects/gvpn/src$ make
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -DPACKAGE_LOCALE_DIR=\""/usr/local/share/locale"\" -DPACKAGE_SRC_DIR=\""."\" -DPACKAGE_DATA_DIR=\""/usr/local/share"\" -DORBIT2=1 -pthread -I/usr/include/libgnome-2.0 -I/usr/include/orbit-2.0 -I/usr/include/gconf/2 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libbonobo-2.0 -I/usr/include/bonobo-activation-2.0 -I/usr/include/libgnomeui-2.0 -I/usr/include/libart-2.0 -I/usr/include/gnome-keyring-1 -I/usr/include/libbonoboui-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gtk-2.0 -I/usr/include/libxml2 -I/usr/include/pango-1.0 -I/usr/include/gail-1.0 -I/usr/include/freetype2 -I/usr/include/atk-1.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/libglade-2.0    -Wall -g -g -O2 -MT comm.o -MD -MP -MF ".deps/comm.Tpo" -c -o comm.o comm.c; \
+        then mv -f ".deps/comm.Tpo" ".deps/comm.Po"; else rm -f ".deps/comm.Tpo"; exit 1; fi
+comm.c: В функции ‘FCInit’
+comm.c:5: предупреждение: implicit declaration of function ‘system’
+comm.c: На верхнем уровне:
+comm.c:9: ошибка: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+comm.c:19: ошибка: expected ‘)’ before ‘*’ token
+comm.c:23: ошибка: expected ‘)’ before ‘*’ token
+comm.c: В функции ‘FCSend’
+comm.c:28: ошибка: ‘FILE’ undeclared (first use in this function)
+comm.c:28: ошибка: (Each undeclared identifier is reported only once
+comm.c:28: ошибка: for each function it appears in.)
+comm.c:28: ошибка: ‘file’ undeclared (first use in this function)
+comm.c:28: предупреждение: implicit declaration of function ‘FCSendBegin’
+comm.c:29: предупреждение: implicit declaration of function ‘FCSendContinue’
+comm.c:30: предупреждение: implicit declaration of function ‘FCSendEnd’
+comm.c: На верхнем уровне:
+comm.c:33: ошибка: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+comm.c:40: ошибка: expected ‘)’ before ‘*’ token
+comm.c:46: ошибка: expected ‘)’ before ‘*’ token
+comm.c: В функции ‘FCAvailable’
+comm.c:53: предупреждение: implicit declaration of function ‘chdir’
+comm.c:55: ошибка: ‘FILE’ undeclared (first use in this function)
+comm.c:55: ошибка: ‘file’ undeclared (first use in this function)
+comm.c:56: предупреждение: implicit declaration of function ‘fopen’
+comm.c:58: предупреждение: implicit declaration of function ‘fclose’
+comm.c:63: ошибка: ‘fl’ undeclared (first use in this function)
+comm.c:63: предупреждение: implicit declaration of function ‘FCReceiveBegin’
+comm.c:64: предупреждение: implicit declaration of function ‘feof’
+comm.c: В функции ‘FCReceiveNow’
+comm.c:72: ошибка: ‘FILE’ undeclared (first use in this function)
+comm.c:72: ошибка: ‘fl’ undeclared (first use in this function)
+comm.c:75: предупреждение: implicit declaration of function ‘FCReceiveContinue’
+comm.c:81: предупреждение: implicit declaration of function ‘FCReceiveEnd’
+comm.c:84: предупреждение: implicit declaration of function ‘sleep’
+make: *** [comm.o] Ошибка 1
+john@punkoff:~/Projects/gvpn/src$
+john@punkoff:~/Projects/gvpn/src$ make > log
+comm.c: В функции ‘FCInit’
+comm.c:5: предупреждение: implicit declaration of function ‘system’
+comm.c: На верхнем уровне:
+comm.c:9: ошибка: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+comm.c:19: ошибка: expected ‘)’ before ‘*’ token
+comm.c:23: ошибка: expected ‘)’ before ‘*’ token
+comm.c: В функции ‘FCSend’
+comm.c:28: ошибка: ‘FILE’ undeclared (first use in this function)
+comm.c:28: ошибка: (Each undeclared identifier is reported only once
+comm.c:28: ошибка: for each function it appears in.)
+comm.c:28: ошибка: ‘file’ undeclared (first use in this function)
+comm.c:28: предупреждение: implicit declaration of function ‘FCSendBegin’
+comm.c:29: предупреждение: implicit declaration of function ‘FCSendContinue’
+comm.c:30: предупреждение: implicit declaration of function ‘FCSendEnd’
+comm.c: На верхнем уровне:
+comm.c:33: ошибка: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+comm.c:40: ошибка: expected ‘)’ before ‘*’ token
+comm.c:46: ошибка: expected ‘)’ before ‘*’ token
+comm.c: В функции ‘FCAvailable’
+comm.c:53: предупреждение: implicit declaration of function ‘chdir’
+comm.c:55: ошибка: ‘FILE’ undeclared (first use in this function)
+comm.c:55: ошибка: ‘file’ undeclared (first use in this function)
+comm.c:56: предупреждение: implicit declaration of function ‘fopen’
+comm.c:58: предупреждение: implicit declaration of function ‘fclose’
+comm.c:63: ошибка: ‘fl’ undeclared (first use in this function)
+comm.c:63: предупреждение: implicit declaration of function ‘FCReceiveBegin’
+comm.c:64: предупреждение: implicit declaration of function ‘feof’
+comm.c: В функции ‘FCReceiveNow’
+comm.c:72: ошибка: ‘FILE’ undeclared (first use in this function)
+comm.c:72: ошибка: ‘fl’ undeclared (first use in this function)
+comm.c:75: предупреждение: implicit declaration of function ‘FCReceiveContinue’
+comm.c:81: предупреждение: implicit declaration of function ‘FCReceiveEnd’
+comm.c:84: предупреждение: implicit declaration of function ‘sleep’
+make: *** [comm.o] Ошибка 1
+
