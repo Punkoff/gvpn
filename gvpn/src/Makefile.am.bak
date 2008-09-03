@@ -1,0 +1,47 @@
+## Process this file with automake to produce Makefile.in
+
+## Created by Anjuta
+
+
+AM_CPPFLAGS = \
+	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
+	-DPACKAGE_SRC_DIR=\""$(srcdir)"\" \
+	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
+	$(GVPN_CFLAGS)
+
+AM_CFLAGS =\
+	 -Wall\
+	 -g
+
+bin_PROGRAMS = gvpn
+
+gvpn_SOURCES = \
+	main.c \
+	comm.c \
+	comm.h \
+	icon.png \
+	cfg.c \
+	cfg.h
+
+gvpn_LDFLAGS = \
+	-Wl,--export-dynamic
+
+gvpn_LDADD = $(GVPN_LIBS)
+
+files_DATA = \
+	icon.png\
+	gvpn.glade \
+	icon_c.png
+
+filesdir = \
+	$(pkgdatadir)
+
+other_DATA = \
+	gvpn.glade\
+	icon.png
+
+otherdir = \
+	$(pkgdatadir)
+
+EXTRA_DIST = \
+	$(other_DATA)

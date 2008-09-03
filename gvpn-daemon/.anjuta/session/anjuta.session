@@ -1,0 +1,11 @@
+
+[Anjuta]
+Geometry=1279x938+1+49
+
+[File Loader]
+Files=file:///home/john/Projects/gvpn-daemon/src/pptp.c#246%%%file:///home/john/Projects/gvpn-daemon/src/pptp.h#6%%%file:///home/john/Projects/gvpn-daemon/src/comm.c#12%%%file:///home/john/Projects/gvpn-daemon/src/comm.h#4%%%file:///home/john/Projects/gvpn-daemon/src/main.c#69%%%file:///home/john/Projects/gvpn-daemon/src/common.h#7%%%file:///home/john/Projects/gvpn-daemon/src/common.c#3%%%file:///home/john/Projects/gvpn-daemon/src/daemon.c#44%%%file:///home/john/Projects/gvpn-daemon/src/daemon.h#20
+
+[Execution]
+Program arguments=
+Run in terminal=2
+Last selected uri=file:///home/john/Projects/gvpn-daemon/src/gvpn_daemon

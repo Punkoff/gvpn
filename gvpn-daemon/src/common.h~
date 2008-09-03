@@ -1,0 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <syslog.h>
+#include <errno.h>
+
+static void error(char* str);

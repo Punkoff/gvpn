@@ -1,0 +1,48 @@
+/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * callbacks.c
+ * Copyright (C) John Pankov 2008 <pankov@adsl.by>
+ * 
+ * callbacks.c is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * callbacks.c is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
+
+#include <gnome.h>
+
+#include "callbacks.h"
+
+static void ErrorBox_Signal (GtkWidget* wnd)
+{
+	gtk_widget_hide(wnd);
+	if (fatal==1) exit(1);
+	fatal=-1;
+}
+
+void ErrorBox(char* err, int ftl) { //Show error messagebox. ftl=1 will cause exit(1)
+	GtkWidget* gw=gtk_message_dialog_new(GTK_WINDOW(window),1,GTK_MESSAGE_ERROR,GTK_BUTTONS_OK,err);
+ 	gtk_widget_show(gw);
+	fatal=ftl;
+	gtk_signal_connect (GTK_OBJECT (gw), "response", GTK_SIGNAL_FUNC (ErrorBox_Signal),
+		NULL);
+	while (fatal!=-1) {
+		gtk_main_iteration();
+	}
+}
+
+void on_wndMain_destroy() {
+	exit(0); 
+}
