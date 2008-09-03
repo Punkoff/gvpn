@@ -28,12 +28,10 @@ void NotifyInit() {
 	strcpy(icon_c,RDir);
 	strcat(icon_c,"/icon_c.png");
 	Notify=gtk_status_icon_new_from_file (icon_n);
-	int n=0;
 	g_signal_connect (G_OBJECT(Notify), "activate", G_CALLBACK (NotifyActivate),
 		NULL);
 	g_signal_connect (G_OBJECT(Notify), "popup-menu", G_CALLBACK (NotifyPopup),
 		NULL);
-	
 }
 
 
