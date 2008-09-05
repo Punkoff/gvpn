@@ -1,0 +1,40 @@
+## Process this file with automake to produce Makefile.in
+
+## Created by Anjuta
+
+
+gladedir = $(datadir)/gvpn/glade
+glade_DATA = gvpn.glade
+
+
+AM_CPPFLAGS = \
+	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
+	-DPACKAGE_SRC_DIR=\""$(srcdir)"\" \
+	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
+	$(GVPN_CFLAGS)
+
+AM_CFLAGS =\
+	 -Wall\
+	 -g
+
+bin_PROGRAMS = gvpn
+
+gvpn_SOURCES = \
+	callbacks.c \
+	callbacks.h \
+	main.c \
+	comm.c
+
+gvpn_LDFLAGS = \
+	-Wl,--export-dynamic
+
+gvpn_LDADD = $(GVPN_LIBS)
+
+EXTRA_DIST = $(glade_DATA) \
+	$(files_DATA)
+
+files_DATA = \
+	icon.png
+
+filesdir = \
+	$(pkgdatadir)

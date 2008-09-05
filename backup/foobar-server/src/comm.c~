@@ -1,0 +1,122 @@
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/un.h>
+#include <stdio.h>
+#include "comm.h"
+
+static int CommServerSocket;
+static int CommServerConnection;
+static FILE* CommServerStreamIn;
+static FILE* CommServerStreamOut;
+static int CommServerStatus=0; //0=uninitialized;1=idle;2=connected
+static struct sockaddr_un CommServerAddr, CommServerFAddr;
+static int CommClientSocket;
+static int CommClientConnection;
+static FILE* CommClientStreamIn;
+static FILE* CommClientStreamOut;
+static int CommClientStatus=0; //0=uninitialized;1=idle;2=connected
+static struct sockaddr_un CommClientAddr, CommClientFAddr;
+    
+int CommServerInit(char* addr) {
+	int len;
+	
+    if ((CommServerSocket = socket(AF_UNIX, SOCK_STREAM, 0)) < 0) {
+        perror("server: socket");
+		CommServerStatus=0;
+		return 0;
+	}
+    CommServerAddr.sun_family = AF_UNIX;
+    strcpy(CommServerAddr.sun_path, addr);
+    unlink(addr);
+	
+	//int a=1;
+	//setsockopt(CommServerSocket, SOL_SOCKET, SO_REUSEADDR, &a, sizeof(a));
+		
+	len = sizeof(CommServerAddr.sun_family) + strlen(CommServerAddr.sun_path);
+    if (bind(CommServerSocket, &CommServerAddr, len) < 0) {
+        perror("server: bind");
+    	CommServerStatus=0;
+		return 0;
+    }
+	CommServerStatus=1;
+	return 1;
+}
+
+int CommServerAccept() {
+	int fromlen;
+	
+	
+	if (listen(CommServerSocket, 5) < 0) {
+        perror("server: listen");
+   		CommServerStatus=0;
+		return 0;
+    }
+
+    if ((CommServerConnection = accept(CommServerSocket, &CommServerFAddr, &fromlen)) < 0) {
+        perror("server: accept");
+   		CommServerStatus=0;
+		return 0;
+    }
+	
+	CommServerStreamIn = fdopen(CommServerConnection, "r");
+	CommServerStreamOut = fdopen(CommServerConnection, "w");
+	CommServerStatus=2;
+	
+	return 1;
+}
+
+void CommServerClose() {
+	close(CommServerSocket);
+}
+
+void CommServerReceive(char* data) {
+	fgets(data, 256, CommServerStreamIn);
+}
+
+void CommServerSend(char* data) {
+	send(CommServerConnection, data, strlen(data), 0);
+}
+
+int CommClientInit(char* addr) {
+	CommClientStatus=0;
+	
+	if ((CommClientSocket = socket(AF_UNIX, SOCK_STREAM, 0)) < 0) {
+        perror("client: socket");
+        return 0;
+    }
+
+    CommClientAddr.sun_family = AF_UNIX;
+    strcpy(CommClientAddr.sun_path, addr);
+
+    
+	CommClientStatus=1;
+	return 1;
+}
+
+int CommClientConnect() {
+	int len = 0;
+	len = sizeof(CommClientAddr.sun_family) + strlen(CommClientAddr.sun_path);
+
+	if (connect(CommClientSocket, &CommClientAddr, len) < 0) {
+        perror("client: connect");
+        return 0;
+	}
+	
+	CommClientStreamIn = fdopen(CommClientSocket, "r");
+	CommClientStreamOut = fdopen(CommClientSocket, "w");
+	CommClientStatus=2;
+	
+	return 1;
+}
+
+void CommClientClose() {
+	close(CommClientSocket);
+}
+
+void CommClientReceive(char* data) {
+	fgets(data, 256, CommClientStreamIn);
+}
+
+void CommClientSend(char* data) {
+	send(CommClientConnection, data, strlen(data), 0);
+}

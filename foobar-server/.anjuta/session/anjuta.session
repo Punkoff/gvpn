@@ -1,0 +1,13 @@
+
+[Anjuta]
+Geometry=1279x938+1+49
+
+[File Loader]
+Files=file:///home/john/Projects/foobar-server/src/comm.c#165%%%file:///home/john/Projects/foobar-server/src/comm.h#1%%%file:///home/john/Projects/foobar-server/src/main.c#20
+
+[Execution]
+Program arguments=
+Run in terminal=2
+Last selected uri=file:///home/john/Projects/foobar-server/src/foobar_server
+Program uri=file:///home/john/Projects/foobar-server/src/foobar_server
+Stop at beginning=2
