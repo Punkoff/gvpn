@@ -14,13 +14,13 @@ AM_CFLAGS =\
 bin_PROGRAMS = gvpn_daemon
 
 gvpn_daemon_SOURCES = \
-	main.c       \
-	daemon.c       \
 	comm.c       \
 	comm.h       \
 	common.c       \
 	common.h       \
+	daemon.c       \
 	daemon.h       \
+	main.c       \
 	pptp.c       \
 	pptp.h
 

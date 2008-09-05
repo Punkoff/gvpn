@@ -1,6 +1,17 @@
 <?xml version="1.0"?>
 <gtodo>
-  <category title="Personal" place="0"/>
+  <category title="Personal" place="0">
+    <item>
+      <attribute id="1220624978" priority="1" done="0" start_date="733290" enddate="99999999" notify="0" endtime="-60" last_edited="1220624978"/>
+      <summary>PPTPProcess - stat &#x43F;&#x43E;-&#x43B;&#x44E;&#x434;&#x441;&#x43A;&#x438; &#x441;&#x434;&#x435;&#x43B;&#x430;&#x442;&#x44C;</summary>
+      <comment/>
+    </item>
+    <item>
+      <attribute id="1220625071" priority="1" done="0" start_date="733290" enddate="99999999" notify="0" endtime="-60" last_edited="1220625071"/>
+      <summary>&#x420;&#x435;&#x430;&#x433;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x434;&#x430;&#x436;&#x435; &#x431;&#x435;&#x437; replacing default...... &#x43E;&#x442; pptp</summary>
+      <comment></comment>
+    </item>
+  </category>
   <category title="Business" place="1"/>
   <category title="Unfiled" place="2"/>
 </gtodo>

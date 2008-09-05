@@ -1,7 +1,7 @@
 #include "daemon.h"
 
 int fl_daemonize=1;
-int fl_nodetach=0;
+int fl_nodetach=0; 
 
 static void child_handler(int signum)
 {
@@ -9,10 +9,7 @@ static void child_handler(int signum)
     case SIGALRM: exit(EXIT_FAILURE); break;
     case SIGUSR1: exit(EXIT_SUCCESS); break;
     case SIGCHLD: exit(EXIT_FAILURE); break;
-    case SIGTERM: 
-		//remove(lockfile); 
-		exit(EXIT_SUCCESS); 
-		break;
+    case SIGTERM: exit(EXIT_SUCCESS); break;
     }
 }
 
@@ -20,28 +17,9 @@ static void child_handler(int signum)
 void daemonize()
 {
     pid_t pid, sid, parent;
-    int lfp = -1;
-
+ 
 	//If daemon, exit
     if ( getppid() == 1 ) return;
-
-	//Check lockfile
-	//lfp = open(lockfile,O_RDWR,0640);
-	//if ( lfp >= 0 ) error("lock file exists. Daemon is already running"); 
-	//close(lfp);
-	
-	//lfp = open(lockfile,O_RDWR|O_CREAT,0640);
-        
-    
-
-    //Switch to 'daemon' //PPTP doesnt work from 'daemon' user
-    /*if ( getuid() == 0 || geteuid() == 0 ) {
-        struct passwd *pw = getpwnam(RUN_AS_USER);
-        if ( pw ) {
-            syslog( LOG_NOTICE, "setting user to " RUN_AS_USER );
-            setuid( pw->pw_uid );
-        }
-    }*/
 
 	//Signal handlers
     signal(SIGCHLD,child_handler);

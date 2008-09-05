@@ -22,7 +22,7 @@ int begcmp(char* s1,char* s2) {
 	return 0;
 }
 
-void PPTPNewClient() {
+void PPTPNewClient() { //Notify newly connected client about situation
 	if (PPTPStatus==0) CommServerSendString ("sd"); 
 	else {
 		CommServerSendString ("sc");
@@ -173,7 +173,7 @@ void PPTPLaunch() {
 	}
 }
 
-void PPTPGetDefRoute(char* s){ //Get default LAN route
+/*void PPTPGetDefRoute(char* s){ //Get default LAN route
 	FILE *out;
 	char b[256];
 	char res[256];
@@ -189,46 +189,27 @@ void PPTPGetDefRoute(char* s){ //Get default LAN route
 
 	memcpy(s, res, 256);
 	return;
-}
+}*/
 
 void PPTPCreateModemRoute() { //Create '<modem> via <gw> dev <dev>'
 	char s[256];
-	strcpy(s, "ip route add ");
-	strcat(s, PPTPGateway);
-	strcat(s, " via ");
-	strcat(s, PPTPLANGW);
-	strcat(s, " dev ");
-	strcat(s, PPTPLANDev);
+	sprintf(s, "ip route add %s via %s dev %s", PPTPGateway, PPTPLANGW, PPTPLANDev);
 	system(s);
 }
 
 void PPTPSaveDefRoute(){ //Save default route to /tmp/gvpn-def-route
-	char route[256];
-	PPTPGetDefRoute(route);
-	system("echo > /tmp/gvpn-def-route");
-	FILE* fl=fopen("/tmp/gvpn-def-route","w");
-	fprintf(fl, "%s",route);
-	fclose(fl);
+	system("ip route|grep default > /tmp/gvpn-def-route");
 	printf("Saved default route\n");
 }
 
 void PPTPGetLANGW() {
-	if (strcmp(PPTPLANGW,"")!=0) return;
+	if (strcmp(PPTPLANGW,"")!=0) return; //Run away, if a custom gateway was specified
 	
-	FILE* fl=fopen("/tmp/gvpn-def-route","r");
-	char s[256];
-	fgets(s,256,fl);
+	system("cat /tmp/gvpn-def-route|cut -d' ' -f3 > /tmp/gvpn-lan-gw"); 
+	FILE* fl=fopen("/tmp/gvpn-lan-gw","r");
+	fgets(PPTPLANGW,256,fl);
 	fclose(fl);
-	int p=0;
-	while (p<strlen(s) && begcmp(s+p,"via")!=0) p++;
-	p+=4;
-	int bp=0;
-	strcpy(PPTPLANGW,"");
-	while (s[p]!=' ' && p<strlen(s)) {
-		PPTPLANGW[bp]=s[p];
-		p++;bp++;
-	}
-	PPTPLANGW[bp]=0;
+	
 	printf("Lan gateway: %s",PPTPLANGW);
 }
 
@@ -239,11 +220,7 @@ void PPTPDelDefRoute(){
 
 void PPTPRestoreDefRoute(){
 	char s[256];
-	strcpy(s, "ip route add default via ");
-	strcat(s, PPTPLANGW);
-	strcat(s, " dev ");
-	strcat(s, PPTPLANDev);
-	printf("%s\n",s);
+	sprintf(s, "ip route add default via %s dev %s", PPTPLANGW, PPTPLANDev);
 	system(s);
 	printf("Restored default route\n");
 }
@@ -289,24 +266,13 @@ void PPTPProcess(char* cmd){
 		CommServerSendString("dRemoved default route");		
 		PPTPDelDefRoute();
 	}
-	if (strcmp(cmd,"setpptpgw")==0){
-		mode=1;
-	}
-	if (strcmp(cmd,"setlogin")==0){
-		mode=2;
-	}
-	if (strcmp(cmd,"setpassword")==0){
-		mode=3;
-	}
-	if (strcmp(cmd,"setdev")==0){
-		mode=4;
-	}
-	if (strcmp(cmd,"setlangw")==0){
-		mode=5;
-	}
-	if (strcmp(cmd,"abort")==0){
-		PPTPTerminate();
-	}
+	if (strcmp(cmd,"setpptpgw")==0)		mode=1;
+	if (strcmp(cmd,"setlogin")==0)		mode=2;
+	if (strcmp(cmd,"setpassword")==0)   mode=3;
+	if (strcmp(cmd,"setdev")==0)		mode=4;
+	if (strcmp(cmd,"setlangw")==0)		mode=5;
+	if (strcmp(cmd,"abort")==0)		PPTPTerminate();
+	
 	if (strcmp(cmd,"stat")==0){
 		FILE *out;
 		char buffer[1024];
