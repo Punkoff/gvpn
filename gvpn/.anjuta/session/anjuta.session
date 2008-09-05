@@ -1,10 +1,10 @@
 
 [Anjuta]
 Maximized=1
-Geometry=1279x938+1+49
+Geometry=1280x938+0+49
 
 [File Loader]
-Files=file:///home/john/Projects/gvpn/src/comm.c#1%%%file:///home/john/Projects/gvpn/src/ui.c#39%%%file:///home/john/Projects/gvpn/src/handlers.c#67%%%file:///home/john/Projects/gvpn/src/cfg.h#9%%%file:///home/john/Projects/gvpn/src/main.c#195%%%file:///home/john/Projects/gvpn/config.h#59%%%file:///home/john/Projects/gvpn/src/notify.c#8
+Files=file:///home/john/Projects/gvpn/src/comm.c#9%%%file:///home/john/Projects/gvpn/src/ui.c#80%%%file:///home/john/Projects/gvpn/src/handlers.c#21%%%file:///home/john/Projects/gvpn/src/cfg.h#9%%%file:///home/john/Projects/gvpn/src/main.c#179%%%file:///home/john/Projects/gvpn/config.h#59%%%file:///home/john/Projects/gvpn/src/notify.c#39
 
 [Execution]
 Program arguments=
@@ -14,4 +14,4 @@ Program uri=file:///home/john/Projects/gvpn/src/gvpn
 Stop at beginning=1
 
 [Debugger]
-Breakpoint=1:file:///home/john/Projects/gvpn/src/main.c:288:0:%%%1:file:///home/john/Projects/gvpn/src/main.c:267:0:%%%1:file:///home/john/Projects/gvpn/src/notify.c:8:0:%%%1:file:///home/john/Projects/gvpn/src/ui.c:47:0:%%%1:file:///home/john/Projects/gvpn/src/ui.c:39:0:
+Breakpoint=1:file:///home/john/Projects/gvpn/src/main.c:288:0:%%%1:file:///home/john/Projects/gvpn/src/main.c:267:0:%%%1:file:///home/john/Projects/gvpn/src/notify.c:8:0:%%%1:file:///home/john/Projects/gvpn/src/ui.c:80:0:%%%1:file:///home/john/Projects/gvpn/src/main.c:189:0:%%%1:file:///home/john/Projects/gvpn/src/main.c:172:0:

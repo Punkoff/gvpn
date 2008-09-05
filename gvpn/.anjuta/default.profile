@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <anjuta>
-    <plugin name="Profiler" mandatory="no">
+    <plugin name="Patch Plugin" mandatory="no">
         <require group="Anjuta Plugin"
                  attribute="Location"
-                 value="anjuta-profiler:Profiler"/>
+                 value="anjuta-patch:PatchPlugin"/>
     </plugin>
     <plugin name="Tools" mandatory="no">
         <require group="Anjuta Plugin"
