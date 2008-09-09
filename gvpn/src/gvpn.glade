@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.2 on Wed Sep  3 21:15:31 2008 -->
+<!--Generated with glade3 3.4.2 on Mon Sep  8 18:24:00 2008 -->
 <glade-interface>
   <widget class="GtkDialog" id="dlgSettings">
     <property name="width_request">360</property>
@@ -50,78 +50,15 @@
                   <placeholder/>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label5">
-                    <property name="visible">True</property>
-                    <property name="xalign">0</property>
-                    <property name="label" translatable="yes">VPN Gateway IP:</property>
-                    <property name="ellipsize">PANGO_ELLIPSIZE_START</property>
-                  </widget>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="label6">
-                    <property name="visible">True</property>
-                    <property name="xalign">0</property>
-                    <property name="label" translatable="yes">Login:</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">1</property>
-                    <property name="bottom_attach">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="entry1">
+                  <widget class="GtkEntry" id="entry5">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </widget>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="entry2">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">1</property>
-                    <property name="bottom_attach">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="label7">
-                    <property name="visible">True</property>
-                    <property name="xalign">0</property>
-                    <property name="label" translatable="yes">Password</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">2</property>
-                    <property name="bottom_attach">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="entry3">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">2</property>
-                    <property name="bottom_attach">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="label8">
-                    <property name="visible">True</property>
-                    <property name="xalign">0</property>
-                    <property name="label" translatable="yes">Network device:</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">3</property>
-                    <property name="bottom_attach">4</property>
+                    <property name="top_attach">4</property>
+                    <property name="bottom_attach">5</property>
                   </packing>
                 </child>
                 <child>
@@ -139,16 +76,79 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkEntry" id="entry5">
+                  <widget class="GtkLabel" id="label8">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Network device:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">3</property>
+                    <property name="bottom_attach">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entry3">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </widget>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
-                    <property name="top_attach">4</property>
-                    <property name="bottom_attach">5</property>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
                   </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label7">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Password</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entry2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entry1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label6">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Login:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label5">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">VPN Gateway IP:</property>
+                    <property name="ellipsize">PANGO_ELLIPSIZE_START</property>
+                  </widget>
                 </child>
               </widget>
               <packing>
@@ -409,6 +409,7 @@
             <child>
               <widget class="GtkToolButton" id="tbConnect">
                 <property name="visible">True</property>
+                <property name="is_important">True</property>
                 <property name="label" translatable="yes">Connect</property>
                 <property name="stock_id">gtk-connect</property>
                 <signal name="clicked" handler="on_tbConnect_clicked"/>
@@ -420,6 +421,7 @@
             <child>
               <widget class="GtkToolButton" id="tbDisconnect">
                 <property name="visible">True</property>
+                <property name="is_important">True</property>
                 <property name="label" translatable="yes">Disconnect</property>
                 <property name="stock_id">gtk-disconnect</property>
                 <signal name="clicked" handler="on_tbDisconnect_clicked"/>
@@ -440,6 +442,7 @@
             <child>
               <widget class="GtkToolButton" id="tbSettings">
                 <property name="visible">True</property>
+                <property name="is_important">True</property>
                 <property name="label" translatable="yes">Settings</property>
                 <property name="stock_id">gtk-preferences</property>
                 <signal name="clicked" handler="on_tbSettings_clicked"/>
@@ -531,6 +534,7 @@
                       <widget class="GtkLabel" id="dtlabel">
                         <property name="visible">True</property>
                         <property name="xalign">0</property>
+                        <property name="yalign">0</property>
                         <property name="label" translatable="yes">Not connected</property>
                       </widget>
                       <packing>

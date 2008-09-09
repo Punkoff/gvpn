@@ -47,7 +47,8 @@ am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(filesdir)" \
 	"$(DESTDIR)$(otherdir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_gvpn_OBJECTS = main.$(OBJEXT) comm.$(OBJEXT) cfg.$(OBJEXT)
+am_gvpn_OBJECTS = callbacks.$(OBJEXT) cfg.$(OBJEXT) comm.$(OBJEXT) \
+	main.$(OBJEXT)
 gvpn_OBJECTS = $(am_gvpn_OBJECTS)
 am__DEPENDENCIES_1 =
 gvpn_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -245,35 +246,35 @@ AM_CFLAGS = \
 	 -g
 
 gvpn_SOURCES = \
-	main.c \
+	callbacks.c\
+	callbacks.h \
+	cfg.c \
+	cfg.h \
 	comm.c \
 	comm.h \
-	icon.png \
-	cfg.c \
-	cfg.h
+	main.c 
 
 gvpn_LDFLAGS = \
 	-Wl,--export-dynamic
 
 gvpn_LDADD = $(GVPN_LIBS)
 files_DATA = \
-	icon.png\
+	callbacks.c\
 	gvpn.glade \
+	icon.png \
 	icon_c.png \
 	icon_d.png
 
 filesdir = \
 	$(pkgdatadir)
 
-other_DATA = \
-	gvpn.glade\
-	icon.png
-
+other_DATA = 
 otherdir = \
 	$(pkgdatadir)
 
 EXTRA_DIST = \
-	$(other_DATA)
+	$(other_DATA)\
+	$(app_DATA)
 
 all: all-am
 
@@ -346,6 +347,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/callbacks.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cfg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/comm.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@

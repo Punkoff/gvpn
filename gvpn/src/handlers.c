@@ -1,8 +1,4 @@
 
-void on_wndMain_destroy() {
-	exit(0); 
-}
-
 void on_tbAbout_clicked() {
 	GtkAboutDialog* dlg=GTK_ABOUT_DIALOG(glade_xml_get_widget (gxml, "dlgAbout"));
 	gtk_about_dialog_set_authors (dlg, authors);

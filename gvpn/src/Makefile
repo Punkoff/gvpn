@@ -47,7 +47,8 @@ am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(filesdir)" \
 	"$(DESTDIR)$(otherdir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_gvpn_OBJECTS = main.$(OBJEXT) comm.$(OBJEXT) cfg.$(OBJEXT)
+am_gvpn_OBJECTS = callbacks.$(OBJEXT) cfg.$(OBJEXT) comm.$(OBJEXT) \
+	main.$(OBJEXT)
 gvpn_OBJECTS = $(am_gvpn_OBJECTS)
 am__DEPENDENCIES_1 =
 gvpn_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -80,14 +81,14 @@ DATA = $(files_DATA) $(other_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/john/Projects/gvpn/missing --run aclocal-1.10
+ACLOCAL = ${SHELL} /home/john/work/gvpn/missing --run aclocal-1.10
 ALL_LINGUAS = 
-AMTAR = ${SHELL} /home/john/Projects/gvpn/missing --run tar
+AMTAR = ${SHELL} /home/john/work/gvpn/missing --run tar
 AR = ar
-AUTOCONF = ${SHELL} /home/john/Projects/gvpn/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/john/Projects/gvpn/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/john/Projects/gvpn/missing --run automake-1.10
-AWK = mawk
+AUTOCONF = ${SHELL} /home/john/work/gvpn/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/john/work/gvpn/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/john/work/gvpn/missing --run automake-1.10
+AWK = gawk
 CATALOGS = 
 CATOBJEXT = .gmo
 CC = gcc
@@ -155,7 +156,7 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LN_S = ln -s
 LTLIBOBJS = 
 MAINT = 
-MAKEINFO = ${SHELL} /home/john/Projects/gvpn/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/john/work/gvpn/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
@@ -183,10 +184,10 @@ STRIP = strip
 USE_NLS = yes
 VERSION = 0.1
 XGETTEXT = /usr/bin/xgettext
-abs_builddir = /home/john/Projects/gvpn/src
-abs_srcdir = /home/john/Projects/gvpn/src
-abs_top_builddir = /home/john/Projects/gvpn
-abs_top_srcdir = /home/john/Projects/gvpn
+abs_builddir = /home/john/work/gvpn/src
+abs_srcdir = /home/john/work/gvpn/src
+abs_top_builddir = /home/john/work/gvpn
+abs_top_srcdir = /home/john/work/gvpn
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 ac_ct_F77 = 
@@ -215,7 +216,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = $(SHELL) /home/john/Projects/gvpn/install-sh
+install_sh = $(SHELL) /home/john/work/gvpn/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -245,35 +246,35 @@ AM_CFLAGS = \
 	 -g
 
 gvpn_SOURCES = \
-	main.c \
+	callbacks.c\
+	callbacks.h \
+	cfg.c \
+	cfg.h \
 	comm.c \
 	comm.h \
-	icon.png \
-	cfg.c \
-	cfg.h
+	main.c 
 
 gvpn_LDFLAGS = \
 	-Wl,--export-dynamic
 
 gvpn_LDADD = $(GVPN_LIBS)
 files_DATA = \
-	icon.png\
+	callbacks.c\
 	gvpn.glade \
+	icon.png \
 	icon_c.png \
 	icon_d.png
 
 filesdir = \
 	$(pkgdatadir)
 
-other_DATA = \
-	gvpn.glade\
-	icon.png
-
+other_DATA = 
 otherdir = \
 	$(pkgdatadir)
 
 EXTRA_DIST = \
-	$(other_DATA)
+	$(other_DATA)\
+	$(app_DATA)
 
 all: all-am
 
@@ -346,6 +347,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/callbacks.Po
 include ./$(DEPDIR)/cfg.Po
 include ./$(DEPDIR)/comm.Po
 include ./$(DEPDIR)/main.Po

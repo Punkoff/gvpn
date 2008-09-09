@@ -14,13 +14,14 @@ static char PPTPRcvd[256];
 static int mode=0; //0=nothing 1=setpptpgw 2=setlogin 3=setpassword 4=setdev 5=setlangw
 static int PPTPStatus=0; //0=disconnected;1=connecting;2=connected
 extern int CommServerConnection;
+extern int CommServerStatus;
 
-int begcmp(char* s1,char* s2) {
+/*int begcmp(char* s1,char* s2) {
 	int p=0;
 	if (strlen(s1)<strlen(s2)) return -1;
 	for (p=0;p<strlen(s2);p++) if (s1[p]!=s2[p]) return -1;
 	return 0;
-}
+}*/
 
 void PPTPNewClient() { //Notify newly connected client about situation
 	if (PPTPStatus==0) CommServerSendString ("sd"); 
@@ -56,112 +57,46 @@ void PPTPLaunch() {
 	PPTPSaveDefRoute();
 	if (strcmp(PPTPLANGW,"")!=0) PPTPGetLANGW(); //Get LAN GW if no custom specified
 	
-	strcpy(cmd,"pptp ");
-	strcat(cmd,PPTPGateway);
-	strcat(cmd," defaultroute replacedefaultroute nodetach name ");
-	strcat(cmd,PPTPLogin);
-	strcat(cmd," password ");
-	strcat(cmd,PPTPPassword);
+	sprintf(cmd,"pptp %s defaultroute replacedefaultroute nodetach name %s password %s", PPTPGateway, PPTPLogin, PPTPPassword);
 	strcpy(tmp,"d");
 	strcat(tmp,cmd);
+	printf("Command: %s\n",cmd);
 	CommServerSendString("dCommand line:");
 	CommServerSendString(tmp);
 	CommServerSendString("mConnecting");
-		
+	
 	PPTPCreateModemRoute();
-		
-	//FCSend("gvpn","Launching PPTP");
+	
 	out = popen(cmd, "r");
+	if (out==NULL) printf("No pipe!\n");
 	
 	PPTPStatus=2;
+	
 	while (!feof(out)) {
 		strcpy(buffer,"");
 		
-		//---------------------------------------------------
-		//check if there is something from pptp
-		struct pollfd pfd;
-		pfd.revents=0;
-		pfd.fd=fileno(out);
-		pfd.events=3;
-		poll(&pfd,1,100);
-		
-		if ((pfd.revents & 3)!= 0) {
+		if (HasData(fileno(out),100)!= 0) {
+			printf("got data\n");
 			buffer[read(fileno(out), buffer, 1024)]=0;
 			strcpy(tmp,"d");
 			strcat(tmp,buffer);
 			printf("pptp: %s",buffer);
 			CommServerSendString(tmp);
-			if (begcmp(tmp+1,"Using interface")==0) {   //Detect PPP device
-				strcpy(buffer,"odDevice: /dev/");
-				strcpy(PPTPDev,tmp+17);
-				PPTPDev[4]=0;
-				strcat(buffer, PPTPDev);
-				CommServerSendString (buffer);
-				CommServerSendString ("pa");
-				CommServerSendString ("sConnecting");
-				PPTPStatus=1;
-			}
-			if (begcmp(tmp+1,"CHAP authentication succeeded")==0) {
-				CommServerSendString ("pb");
-				CommServerSendString ("sAuthorized");
-			}
-			if (begcmp(tmp+1,"PAP authentication succeeded")==0) {
-				CommServerSendString ("pb");
-				CommServerSendString ("sAuthorized");
-			}
-			if (begcmp(tmp+1,"replacing")==0) { //IPs
-				CommServerSendString ("pc");
-				CommServerSendString ("s");
-				PPTPCreateModemRoute();
-				//Get local IP
-				strcpy(buffer,"ol");
-				int bp=0,p=0;
-				while (begcmp(tmp+p,"local  IP")!=0) p++;
-				p+=18;
-				while (tmp[p]!='\n') {
-					PPTPLocalIP[bp]=tmp[p];
-					p++;bp++;
-				}
-				PPTPLocalIP[bp]=0;
-				strcat(buffer,PPTPLocalIP);
-				CommServerSendString (buffer);
-				//Get remote IP
-				strcpy(buffer,"or");
-				bp=0;
-				while (begcmp(tmp+p,"remote IP")!=0) p++;
-				p+=18;
-				while (tmp[p]!='\n') {
-					PPTPRemoteIP[bp]=tmp[p];
-					p++;bp++;
-				}
-				PPTPRemoteIP[bp]=0;
-				strcat(buffer,PPTPRemoteIP);
-				CommServerSendString (buffer);
-				strcpy(buffer,"og");
-				strcat(buffer, PPTPGateway);
-				CommServerSendString (buffer);
-		
-				PPTPStatus=2;
-			}
-			if (begcmp(tmp+1,"Terminating")==0) { //PPTP down
-				CommServerSendString ("p0");
-				PPTPTerminate();
-				return;
-			}
+			
+			ParseFromPPTP(buffer);
 		} 
-
+		
 		//or from client
-		pfd.fd=CommServerConnection;
-		pfd.events=3;
-		pfd.revents=0;
-		poll(&pfd,1,100);
-		if ((pfd.revents & 3) != 0) {
+		if (CommServerStatus!=2) {
+			CommServerAccept ();
+		}
+		if (HasData(CommServerConnection,100) != 0) {
 			char str[256];
 			int n = CommServerReceiveString(str);
 			if (n <= 0) {
 				return;
 			}
-		
+			
 			printf("Received: %s\n",str);
 			PPTPProcess (str);
 			if (strcmp(str,"abort")==0) {
@@ -169,27 +104,60 @@ void PPTPLaunch() {
 				return;
 			}
 		}
-
+		
 	}
 }
 
-/*void PPTPGetDefRoute(char* s){ //Get default LAN route
-	FILE *out;
-	char b[256];
-	char res[256];
-	
-	out = popen("ip route" , "r");
-	
-	while (!feof(out)) {
-		fgets(b,256, out);
-		if (b[0]=='d' && b[1]=='e' && b[2]=='f') {
-			memcpy(res,b,256);
-		}
-	}
+void ParseFromPPTP(char* buffer) {
+	char tmp[256];
 
-	memcpy(s, res, 256);
-	return;
-}*/
+	if (strstr(buffer,"Using interface")!=NULL) {   //Detected PPP device
+		strcpy(buffer,"odDevice: /dev/");
+		strcpy(PPTPDev,buffer+16);
+		PPTPDev[4]=0;
+		sprintf(tmp, "odDevice: /dev/%s", PPTPDev);
+		CommServerSendString (tmp);
+		CommServerSendString ("pa"); //Stage A
+		CommServerSendString ("sConnecting");
+		PPTPStatus=1;
+	}
+	if (strstr(buffer,"authentication succeeded")!=NULL) {
+		CommServerSendString ("pb"); //Stage B
+		CommServerSendString ("sAuthorized");
+	}
+	if (strstr(buffer,"local  IP address")!=NULL) { //IPs detected, connected
+		char* p=0;
+		
+		CommServerSendString ("pc"); //Stage C
+		CommServerSendString ("s");
+		PPTPCreateModemRoute();
+		
+		//Get local IP
+		strcpy(PPTPLocalIP, strstr(buffer,"local  IP")+strlen("local  IP address "));	
+		if ((p=strstr(PPTPLocalIP," "))!=NULL) *p=0;
+		if ((p=strstr(PPTPLocalIP,"\n"))!=NULL) *p=0;
+		sprintf(tmp,"ol%s",PPTPLocalIP);
+		CommServerSendString (tmp);
+		
+		//Get remote IP
+		strcpy(PPTPRemoteIP, strstr(buffer,"remote IP")+strlen("remote IP address "));	
+		if ((p=strstr(PPTPRemoteIP," "))!=NULL) *p=0;
+		if ((p=strstr(PPTPRemoteIP,"\n"))!=NULL) *p=0;
+		sprintf(tmp,"or%s",PPTPRemoteIP);
+		CommServerSendString (tmp);
+		
+		//Send GW IP
+		sprintf(tmp,"og%s",PPTPGateway);
+		CommServerSendString (tmp);
+		
+		PPTPStatus=2;
+	}
+	if (strstr(buffer,"Terminating")!=NULL) { //PPTP down
+		CommServerSendString ("p0"); //Stage 0
+		PPTPTerminate();
+		return;
+	}
+}
 
 void PPTPCreateModemRoute() { //Create '<modem> via <gw> dev <dev>'
 	char s[256];
@@ -236,20 +204,20 @@ void PPTPProcess(char* cmd){
 	if (mode!=0){
 		switch (mode) {
 			case 1: strcpy(PPTPGateway,cmd);
-					printf("Using gateway: %s\n",PPTPGateway);
-					break;
+			printf("Using gateway: %s\n",PPTPGateway);
+			break;
 			case 2: strcpy(PPTPLogin,cmd);
-					printf("Using login: %s\n",PPTPLogin);
-					break;
+			printf("Using login: %s\n",PPTPLogin);
+			break;
 			case 3: strcpy(PPTPPassword,cmd);
-					printf("Using gateway: %s\n",PPTPPassword);
-					break;
+			printf("Using password: %s\n",PPTPPassword);
+			break;
 			case 4: strcpy(PPTPLANDev, cmd);
-					printf("Using device: %s\n",PPTPLANDev);
-					break;
+			printf("Using device: %s\n",PPTPLANDev);
+			break;
 			case 5: strcpy(PPTPLANGW, cmd);
-					printf("Using LAN gateway: %s\n",PPTPLANGW);
-					break;
+			printf("Using LAN gateway: %s\n",PPTPLANGW);
+			break;
 		}
 		mode=0;
 		return;
@@ -282,9 +250,9 @@ void PPTPProcess(char* cmd){
 		out = popen(c, "r");
 		while (!feof(out)) {
 			fgets(buffer, 256, out);
-			if (begcmp(buffer+10,"RX bytes")==0) { //Our line
+			if (strstr(buffer,"RX bytes")!=NULL) { //Our line
 				int bp=0,p=0;
-				while (begcmp(buffer+p,"(")!=0) p++; //Received
+				while (buffer[p]!='(') p++; 
 				p+=1;
 				while (buffer[p]!=')') {
 					PPTPRcvd[bp]=buffer[p];
@@ -292,7 +260,7 @@ void PPTPProcess(char* cmd){
 				}
 				PPTPRcvd[bp]=0;
 				bp=0;							  //Sent
-				while (begcmp(buffer+p,"(")!=0) p++; 
+				while (buffer[p]!='(') p++; 
 				p+=1;
 				while (buffer[p]!=')') {
 					PPTPSent[bp]=buffer[p];

@@ -16,12 +16,13 @@ AM_CFLAGS =\
 bin_PROGRAMS = gvpn
 
 gvpn_SOURCES = \
-	main.c \
+	callbacks.c\
+	callbacks.h \
+	cfg.c \
+	cfg.h \
 	comm.c \
 	comm.h \
-	icon.png \
-	cfg.c \
-	cfg.h
+	main.c 
 
 gvpn_LDFLAGS = \
 	-Wl,--export-dynamic
@@ -29,20 +30,21 @@ gvpn_LDFLAGS = \
 gvpn_LDADD = $(GVPN_LIBS)
 
 files_DATA = \
-	icon.png\
+	callbacks.c\
 	gvpn.glade \
+	icon.png \
 	icon_c.png \
 	icon_d.png
 
 filesdir = \
 	$(pkgdatadir)
 
-other_DATA = \
-	gvpn.glade\
-	icon.png
+other_DATA = 
 
 otherdir = \
 	$(pkgdatadir)
 
 EXTRA_DIST = \
-	$(other_DATA)
+	$(other_DATA)\
+	$(app_DATA)
+

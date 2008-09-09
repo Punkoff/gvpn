@@ -1,18 +1,10 @@
 ## Process this file with automake to produce Makefile.in
 ## Created by Anjuta
 
-SUBDIRS = src po
+SUBDIRS = src po 
 
-gvpndocdir = ${prefix}/doc/gvpn
-gvpndoc_DATA = \
-	README\
-	COPYING\
-	AUTHORS\
-	ChangeLog\
-	INSTALL\
-	NEWS
-
-EXTRA_DIST = $(gvpndoc_DATA)
+EXTRA_DIST = $(gvpndoc_DATA) \
+	$(link_DATA)
 
 # Copy all the spec files. Of cource, only one is actually used.
 dist-hook:
@@ -22,3 +14,6 @@ dist-hook:
 		fi \
 	done
 
+desktopdir = $(datadir)/applications
+desktop_in_files = src/GVPN.desktop
+desktop_DATA = $(desktop_in_files:.desktop.in.in=.desktop)

@@ -24,7 +24,8 @@ daemon.o daemon.o: daemon.c daemon.h /usr/include/stdio.h \
   /usr/include/bits/sigthread.h /usr/include/sys/stat.h \
   /usr/include/bits/stat.h common.h /usr/include/stdlib.h \
   /usr/include/alloca.h /usr/include/syslog.h /usr/include/sys/syslog.h \
-  /usr/include/bits/syslog-path.h
+  /usr/include/bits/syslog-path.h /usr/include/sys/poll.h \
+  /usr/include/bits/poll.h
 
 daemon.h:
 
@@ -135,3 +136,7 @@ common.h:
 /usr/include/sys/syslog.h:
 
 /usr/include/bits/syslog-path.h:
+
+/usr/include/sys/poll.h:
+
+/usr/include/bits/poll.h:

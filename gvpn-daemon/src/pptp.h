@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "comm.h"
+#include "common.h"
 
 void PPTPNewClient();
 void PPTPLaunch();
@@ -13,3 +14,4 @@ void PPTPProcess(char* cmd);
 void PPTPGetLANGW();
 void PPTPCreateModemRoute();
 void PPTPTerminate();
+void ParseFromPPTP();

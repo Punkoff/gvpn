@@ -169,11 +169,12 @@ int Check(){
 		Process(str);
 	}
 	
+	NotifyUpdate();
+	
 	if (!GTK_WIDGET_VISIBLE(GTK_WIDGET(window))) return 1;
 	
 	UpdateDataLabel();
 	SetButtons();
-	NotifyUpdate();
 	
 	return 1;
 }
@@ -192,7 +193,7 @@ int Connect() {
 	if (CommClientConnect()==0) {
 		ErrorBox("Cannot connect to gvpn-daemon. Check if it is running.", 1);	
 	}
-	ConsoleAdd("Connected to daemon");
+	ConsoleAdd("Connected to daemon\n");
 	char s[256];
 	CommClientReceiveString (s);
 	Connected=(strcmp(s,"sc")==0)?1:0;

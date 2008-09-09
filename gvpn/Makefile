@@ -62,9 +62,9 @@ am__vpath_adj = case $$p in \
     *) f=$$p;; \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
-am__installdirs = "$(DESTDIR)$(gvpndocdir)"
-gvpndocDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(gvpndoc_DATA)
+am__installdirs = "$(DESTDIR)$(desktopdir)"
+desktopDATA_INSTALL = $(INSTALL_DATA)
+DATA = $(desktop_DATA)
 RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
   distclean-recursive maintainer-clean-recursive
 ETAGS = etags
@@ -81,14 +81,14 @@ DIST_ARCHIVES = $(distdir).tar.gz
 GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/john/Projects/gvpn/missing --run aclocal-1.10
+ACLOCAL = ${SHELL} /home/john/work/gvpn/missing --run aclocal-1.10
 ALL_LINGUAS = 
-AMTAR = ${SHELL} /home/john/Projects/gvpn/missing --run tar
+AMTAR = ${SHELL} /home/john/work/gvpn/missing --run tar
 AR = ar
-AUTOCONF = ${SHELL} /home/john/Projects/gvpn/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/john/Projects/gvpn/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/john/Projects/gvpn/missing --run automake-1.10
-AWK = mawk
+AUTOCONF = ${SHELL} /home/john/work/gvpn/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/john/work/gvpn/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/john/work/gvpn/missing --run automake-1.10
+AWK = gawk
 CATALOGS = 
 CATOBJEXT = .gmo
 CC = gcc
@@ -156,7 +156,7 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LN_S = ln -s
 LTLIBOBJS = 
 MAINT = 
-MAKEINFO = ${SHELL} /home/john/Projects/gvpn/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/john/work/gvpn/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
@@ -184,10 +184,10 @@ STRIP = strip
 USE_NLS = yes
 VERSION = 0.1
 XGETTEXT = /usr/bin/xgettext
-abs_builddir = /home/john/Projects/gvpn
-abs_srcdir = /home/john/Projects/gvpn
-abs_top_builddir = /home/john/Projects/gvpn
-abs_top_srcdir = /home/john/Projects/gvpn
+abs_builddir = /home/john/work/gvpn
+abs_srcdir = /home/john/work/gvpn
+abs_top_builddir = /home/john/work/gvpn
+abs_top_srcdir = /home/john/work/gvpn
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 ac_ct_F77 = 
@@ -216,7 +216,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = $(SHELL) /home/john/Projects/gvpn/install-sh
+install_sh = $(SHELL) /home/john/work/gvpn/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -235,17 +235,13 @@ sysconfdir = ${prefix}/etc
 target_alias = 
 top_builddir = .
 top_srcdir = .
-SUBDIRS = src po
-gvpndocdir = ${prefix}/doc/gvpn
-gvpndoc_DATA = \
-	README\
-	COPYING\
-	AUTHORS\
-	ChangeLog\
-	INSTALL\
-	NEWS
+SUBDIRS = src po 
+EXTRA_DIST = $(gvpndoc_DATA) \
+	$(link_DATA)
 
-EXTRA_DIST = $(gvpndoc_DATA)
+desktopdir = $(datadir)/applications
+desktop_in_files = src/GVPN.desktop
+desktop_DATA = $(desktop_in_files:.desktop.in.in=.desktop)
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -309,22 +305,22 @@ clean-libtool:
 
 distclean-libtool:
 	-rm -f libtool
-install-gvpndocDATA: $(gvpndoc_DATA)
+install-desktopDATA: $(desktop_DATA)
 	@$(NORMAL_INSTALL)
-	test -z "$(gvpndocdir)" || $(MKDIR_P) "$(DESTDIR)$(gvpndocdir)"
-	@list='$(gvpndoc_DATA)'; for p in $$list; do \
+	test -z "$(desktopdir)" || $(MKDIR_P) "$(DESTDIR)$(desktopdir)"
+	@list='$(desktop_DATA)'; for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  f=$(am__strip_dir) \
-	  echo " $(gvpndocDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(gvpndocdir)/$$f'"; \
-	  $(gvpndocDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(gvpndocdir)/$$f"; \
+	  echo " $(desktopDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(desktopdir)/$$f'"; \
+	  $(desktopDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(desktopdir)/$$f"; \
 	done
 
-uninstall-gvpndocDATA:
+uninstall-desktopDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(gvpndoc_DATA)'; for p in $$list; do \
+	@list='$(desktop_DATA)'; for p in $$list; do \
 	  f=$(am__strip_dir) \
-	  echo " rm -f '$(DESTDIR)$(gvpndocdir)/$$f'"; \
-	  rm -f "$(DESTDIR)$(gvpndocdir)/$$f"; \
+	  echo " rm -f '$(DESTDIR)$(desktopdir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(desktopdir)/$$f"; \
 	done
 
 # This directory's subdirectories are mostly independent; you can cd
@@ -613,7 +609,7 @@ check: check-recursive
 all-am: Makefile $(DATA) config.h
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(gvpndocdir)"; do \
+	for dir in "$(DESTDIR)$(desktopdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-recursive
@@ -660,7 +656,7 @@ info: info-recursive
 
 info-am:
 
-install-data-am: install-gvpndocDATA
+install-data-am: install-desktopDATA
 
 install-dvi: install-dvi-recursive
 
@@ -696,7 +692,7 @@ ps: ps-recursive
 
 ps-am:
 
-uninstall-am: uninstall-gvpndocDATA
+uninstall-am: uninstall-desktopDATA
 
 .MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) install-am \
 	install-strip
@@ -708,15 +704,15 @@ uninstall-am: uninstall-gvpndocDATA
 	distcheck distclean distclean-generic distclean-hdr \
 	distclean-libtool distclean-tags distcleancheck distdir \
 	distuninstallcheck dvi dvi-am html html-am info info-am \
-	install install-am install-data install-data-am install-dvi \
-	install-dvi-am install-exec install-exec-am \
-	install-gvpndocDATA install-html install-html-am install-info \
+	install install-am install-data install-data-am \
+	install-desktopDATA install-dvi install-dvi-am install-exec \
+	install-exec-am install-html install-html-am install-info \
 	install-info-am install-man install-pdf install-pdf-am \
 	install-ps install-ps-am install-strip installcheck \
 	installcheck-am installdirs installdirs-am maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic \
 	mostlyclean-libtool pdf pdf-am ps ps-am tags tags-recursive \
-	uninstall uninstall-am uninstall-gvpndocDATA
+	uninstall uninstall-am uninstall-desktopDATA
 
 
 # Copy all the spec files. Of cource, only one is actually used.

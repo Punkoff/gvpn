@@ -25,7 +25,11 @@ pptp.o pptp.o: pptp.c pptp.h /usr/include/sys/poll.h \
   /usr/include/asm/socket.h /usr/include/asm/sockios.h \
   /usr/include/sys/un.h /usr/include/unistd.h \
   /usr/include/bits/posix_opt.h /usr/include/bits/confname.h \
-  /usr/include/getopt.h
+  /usr/include/getopt.h common.h /usr/include/syslog.h \
+  /usr/include/sys/syslog.h /usr/include/bits/syslog-path.h \
+  /usr/include/errno.h /usr/include/bits/errno.h \
+  /usr/include/linux/errno.h /usr/include/asm/errno.h \
+  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h
 
 pptp.h:
 
@@ -134,3 +138,23 @@ comm.h:
 /usr/include/bits/confname.h:
 
 /usr/include/getopt.h:
+
+common.h:
+
+/usr/include/syslog.h:
+
+/usr/include/sys/syslog.h:
+
+/usr/include/bits/syslog-path.h:
+
+/usr/include/errno.h:
+
+/usr/include/bits/errno.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/asm/errno.h:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/asm-generic/errno-base.h:

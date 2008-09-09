@@ -1,6 +1,0 @@
-#include "common.h"
-
-static void error(char* str){
-	printf(str);
-	exit(EXIT_FAILURE);
-}

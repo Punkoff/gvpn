@@ -30,7 +30,7 @@ AM_PROG_LIBTOOL
 
 
 
-PKG_CHECK_MODULES(GVPN, [libgnome-2.0 >= 2.14 libgnomeui-2.0 >= 2.14 libglade-2.0 >= 2.6.0 pango ])
+PKG_CHECK_MODULES(GVPN, [libgnome-2.0 >= 2.14 libgnomeui-2.0 >= 2.14 libglade-2.0 >= 2.6.0])
 AC_SUBST(GVPN_CFLAGS)
 AC_SUBST(GVPN_LIBS)
 
@@ -41,4 +41,5 @@ AC_OUTPUT([
 Makefile
 src/Makefile
 po/Makefile.in
+link/Makefile
 ])
