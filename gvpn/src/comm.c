@@ -1,1 +1,1 @@
-/home/john/Projects/gvpn-daemon/src/comm.c
+/home/john/work/gvpn/gvpn-daemon/src/comm.c

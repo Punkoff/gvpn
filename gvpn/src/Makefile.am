@@ -17,12 +17,12 @@ bin_PROGRAMS = gvpn
 
 gvpn_SOURCES = \
 	callbacks.c\
+	cfg.h \
+	main.c \
 	callbacks.h \
 	cfg.c \
-	cfg.h \
 	comm.c \
-	comm.h \
-	main.c 
+	comm.h 
 
 gvpn_LDFLAGS = \
 	-Wl,--export-dynamic

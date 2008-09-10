@@ -1,0 +1,55 @@
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f build-stamp 
+# Add here commands to clean up after the build process.
+/usr/bin/make distclean
+make[1]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon'
+Making distclean in src
+make[2]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon/src'
+test -z "gvpn_daemon" || rm -f gvpn_daemon
+rm -f *.o
+rm -f *.tab.c
+test -z "" || rm -f 
+rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
+rm -rf ./.deps
+rm -f Makefile
+make[2]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon/src'
+Making distclean in .
+make[2]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon'
+test -z "" || rm -f 
+rm -f config.h stamp-h1
+rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
+make[2]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon'
+rm -f config.status config.cache config.log configure.lineno config.status.lineno
+rm -f Makefile
+make[1]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon'
+rm -f config.sub config.guess
+dh_clean 
+ dpkg-source -b gvpn-daemon
+dpkg-source: предупреждение: каталог исходников './gvpn-daemon' не в виде <пакет исходников>-<оригинальная версия> 'gvpn-daemon-0.1'
+dpkg-source: сборка gvpn-daemon в gvpn-daemon_0.1-1.tar.gz
+dpkg-source: сборка gvpn-daemon в gvpn-daemon_0.1-1.dsc
+ debian/rules build
+dh_testdir
+# Add here commands to configure the package.
+cp -f /usr/share/misc/config.sub config.sub
+cp -f /usr/share/misc/config.guess config.guess
+./configure --host=i486-linux-gnu --build=i486-linux-gnu --prefix=/usr --mandir=\${prefix}/share/man --infodir=\${prefix}/share/info CFLAGS="" LDFLAGS="-Wl,-z,defs"
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for style of include used by make... GNU
+checking for i486-linux-gnu-gcc... i486-linux-gnu-gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables... 
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether i486-linux-gnu-gcc accepts -g... yes
+checking for i486-linux-gnu-gcc option to accept ISO C89... none needed
+checking dependency style of i486-linux-gnu-gcc... 

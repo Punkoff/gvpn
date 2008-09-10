@@ -1,0 +1,12 @@
+Package: gvpn-daemon
+Version: 0.1
+Architecture: i386
+Maintainer: John Pankov <pankov@adsl.by>
+Installed-Size: 152
+Depends: iproute, libc6 (>= 2.4), pptp-linux
+Recommends: gvpn | gvpn-qt
+Section: web
+Priority: optional
+Description: GVPN daemon
+ A GVPN backend daemon
+ This daemon is a wrapper for pptp-linux and performs some additional operations, such as route rebuilding, statistics collection and others.

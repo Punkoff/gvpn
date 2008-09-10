@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=GVPN
+Type=Application
+Terminal=false
+Icon[ru_RU]=/usr/share/gvpn/icon.png
+Name[ru_RU]=GVPN
+Comment[ru_RU]=Connect to a VPN networks
+Exec=gvpn
+Comment=Connect to a VPN networks
+Icon=/usr/share/gvpn/icon.png

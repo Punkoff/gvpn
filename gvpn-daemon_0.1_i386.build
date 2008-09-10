@@ -1,0 +1,160 @@
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f build-stamp 
+# Add here commands to clean up after the build process.
+/usr/bin/make distclean
+make[1]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon'
+make[1]: *** Нет правила для сборки цели `distclean'.  Останов.
+make[1]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon'
+make: [clean] Ошибка 2 (игнорирована)
+rm -f config.sub config.guess
+dh_clean 
+ dpkg-source -b gvpn-daemon
+dpkg-source: предупреждение: каталог исходников './gvpn-daemon' не в виде <пакет исходников>-<оригинальная версия> 'gvpn-daemon-0.1'
+dpkg-source: сборка gvpn-daemon в gvpn-daemon_0.1.tar.gz
+dpkg-source: сборка gvpn-daemon в gvpn-daemon_0.1.dsc
+ debian/rules build
+dh_testdir
+# Add here commands to configure the package.
+cp -f /usr/share/misc/config.sub config.sub
+cp -f /usr/share/misc/config.guess config.guess
+./configure --host=i486-linux-gnu --build=i486-linux-gnu --prefix=/usr --mandir=\${prefix}/share/man --infodir=\${prefix}/share/info CFLAGS="" LDFLAGS="-Wl,-z,defs"
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for style of include used by make... GNU
+checking for i486-linux-gnu-gcc... i486-linux-gnu-gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables... 
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether i486-linux-gnu-gcc accepts -g... yes
+checking for i486-linux-gnu-gcc option to accept ISO C89... none needed
+checking dependency style of i486-linux-gnu-gcc... gcc3
+checking for library containing strerror... none required
+checking for i486-linux-gnu-gcc... (cached) i486-linux-gnu-gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether i486-linux-gnu-gcc accepts -g... (cached) yes
+checking for i486-linux-gnu-gcc option to accept ISO C89... (cached) none needed
+checking dependency style of i486-linux-gnu-gcc... (cached) gcc3
+checking for i486-linux-gnu-gcc... (cached) i486-linux-gnu-gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether i486-linux-gnu-gcc accepts -g... (cached) yes
+checking for i486-linux-gnu-gcc option to accept ISO C89... (cached) none needed
+checking dependency style of i486-linux-gnu-gcc... (cached) gcc3
+checking how to run the C preprocessor... i486-linux-gnu-gcc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... yes
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating config.h
+config.status: executing depfiles commands
+dh_testdir
+# Add here commands to compile the package.
+/usr/bin/make
+make[1]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon'
+/usr/bin/make  all-recursive
+make[2]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon'
+Making all in src
+make[3]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon/src'
+i486-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DPACKAGE_LOCALE_DIR=\""/usr//locale"\" -DPACKAGE_SRC_DIR=\""."\" -DPACKAGE_DATA_DIR=\""/usr/share"\"   -Wall -g  -MT comm.o -MD -MP -MF .deps/comm.Tpo -c -o comm.o comm.c
+comm.c: В функции ‘CommServerAccept’
+comm.c:50: предупреждение: pointer targets in passing argument 3 of ‘accept’ differ in signedness
+mv -f .deps/comm.Tpo .deps/comm.Po
+i486-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DPACKAGE_LOCALE_DIR=\""/usr//locale"\" -DPACKAGE_SRC_DIR=\""."\" -DPACKAGE_DATA_DIR=\""/usr/share"\"   -Wall -g  -MT common.o -MD -MP -MF .deps/common.Tpo -c -o common.o common.c
+mv -f .deps/common.Tpo .deps/common.Po
+i486-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DPACKAGE_LOCALE_DIR=\""/usr//locale"\" -DPACKAGE_SRC_DIR=\""."\" -DPACKAGE_DATA_DIR=\""/usr/share"\"   -Wall -g  -MT daemon.o -MD -MP -MF .deps/daemon.Tpo -c -o daemon.o daemon.c
+mv -f .deps/daemon.Tpo .deps/daemon.Po
+i486-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DPACKAGE_LOCALE_DIR=\""/usr//locale"\" -DPACKAGE_SRC_DIR=\""."\" -DPACKAGE_DATA_DIR=\""/usr/share"\"   -Wall -g  -MT main.o -MD -MP -MF .deps/main.Tpo -c -o main.o main.c
+mv -f .deps/main.Tpo .deps/main.Po
+i486-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DPACKAGE_LOCALE_DIR=\""/usr//locale"\" -DPACKAGE_SRC_DIR=\""."\" -DPACKAGE_DATA_DIR=\""/usr/share"\"   -Wall -g  -MT pptp.o -MD -MP -MF .deps/pptp.Tpo -c -o pptp.o pptp.c
+mv -f .deps/pptp.Tpo .deps/pptp.Po
+i486-linux-gnu-gcc -Wall -g   -Wl,-z,defs -o gvpn_daemon comm.o common.o daemon.o main.o pptp.o  
+make[3]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon/src'
+make[3]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon'
+make[3]: Цель `all-am' не требует выполнения команд.
+make[3]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon'
+make[2]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon'
+make[1]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon'
+#docbook-to-man debian/gvpn-daemon.sgml > gvpn-daemon.1
+touch build-stamp
+ fakeroot debian/rules binary
+dh_testdir
+dh_testroot
+dh_clean -k 
+dh_installdirs
+# Add here commands to install the package into debian/gvpn-daemon.
+/usr/bin/make DESTDIR=/home/john/work/gvpn/gvpn-daemon/debian/gvpn-daemon install
+make[1]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon'
+Making install in src
+make[2]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon/src'
+make[3]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon/src'
+test -z "/usr/bin" || /bin/mkdir -p "/home/john/work/gvpn/gvpn-daemon/debian/gvpn-daemon/usr/bin"
+  /usr/bin/install -c 'gvpn_daemon' '/home/john/work/gvpn/gvpn-daemon/debian/gvpn-daemon/usr/bin/gvpn_daemon'
+make[3]: Цель `install-data-am' не требует выполнения команд.
+make[3]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon/src'
+make[2]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon/src'
+make[2]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon'
+make[3]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon'
+make[3]: Цель `install-exec-am' не требует выполнения команд.
+test -z "/usr/doc/gvpn_daemon" || /bin/mkdir -p "/home/john/work/gvpn/gvpn-daemon/debian/gvpn-daemon/usr/doc/gvpn_daemon"
+ /usr/bin/install -c -m 644 'README' '/home/john/work/gvpn/gvpn-daemon/debian/gvpn-daemon/usr/doc/gvpn_daemon/README'
+ /usr/bin/install -c -m 644 'COPYING' '/home/john/work/gvpn/gvpn-daemon/debian/gvpn-daemon/usr/doc/gvpn_daemon/COPYING'
+ /usr/bin/install -c -m 644 'AUTHORS' '/home/john/work/gvpn/gvpn-daemon/debian/gvpn-daemon/usr/doc/gvpn_daemon/AUTHORS'
+ /usr/bin/install -c -m 644 'ChangeLog' '/home/john/work/gvpn/gvpn-daemon/debian/gvpn-daemon/usr/doc/gvpn_daemon/ChangeLog'
+ /usr/bin/install -c -m 644 'INSTALL' '/home/john/work/gvpn/gvpn-daemon/debian/gvpn-daemon/usr/doc/gvpn_daemon/INSTALL'
+ /usr/bin/install -c -m 644 'NEWS' '/home/john/work/gvpn/gvpn-daemon/debian/gvpn-daemon/usr/doc/gvpn_daemon/NEWS'
+make[3]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon'
+make[2]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon'
+make[1]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon'
+dh_testdir
+dh_testroot
+dh_installchangelogs ChangeLog
+dh_installdocs
+dh_installexamples
+dh_installinit
+dh_installman
+dh_link
+dh_strip
+dh_compress
+dh_fixperms
+dh_installdeb
+dh_shlibdeps
+dh_gencontrol
+dpkg-gencontrol: предупреждение: неизвестная подстановочная переменная ${misc:Depends}
+dh_md5sums
+dh_builddeb
+dpkg-deb: сборка пакета gvpn-daemon в файл ../gvpn-daemon_0.1_i386.deb.
+ dpkg-genchanges
+dpkg-genchanges: в закачку включён весь исходный код
+dpkg-buildpackage (debuild emulation): full upload; Debian-native package (full source is included)
+Now running lintian...
+E: gvpn-daemon_0.1_i386.changes: bad-distribution-in-changes-file hardy
+W: gvpn-daemon source: debian-rules-ignores-make-clean-error line 48
+W: gvpn-daemon source: out-of-date-standards-version 3.7.2 (current is 3.7.3)
+W: gvpn-daemon source: configure-generated-file-in-source config.log
+W: gvpn-daemon: binary-without-manpage usr/bin/gvpn_daemon
+E: gvpn-daemon: FSSTND-dir-in-usr usr/doc/
+W: gvpn-daemon: extra-license-file usr/doc/gvpn_daemon/COPYING
+W: gvpn-daemon: package-contains-empty-directory usr/sbin/
+W: gvpn-daemon: copyright-lists-upstream-authors-with-dh_make-boilerplate
+W: gvpn-daemon: extended-description-line-too-long
+W: gvpn-daemon: init.d-script-missing-lsb-section /etc/init.d/gvpn-daemon
+Finished running lintian.
+Now signing changes and any dsc files...
+ signfile gvpn-daemon_0.1.dsc John Pankov <pankov@adsl.by>
+gpg: ВНИМАНИЕ: небезопасные права доступа к файлу конфигурации `/home/john/.gnupg/gpg.conf'
+gpg: ВНИМАНИЕ: небезопасные права доступа к каталогу содержащему файл конфигурации `/home/john/.gnupg/gpg.conf'
+gpg: ВНИМАНИЕ: небезопасные права доступа к файлу конфигурации `/home/john/.gnupg/gpg.conf'
+gpg: ВНИМАНИЕ: небезопасные права доступа к каталогу содержащему файл конфигурации `/home/john/.gnupg/gpg.conf'
+gpg: пропущено "John Pankov <pankov@adsl.by>": секретный ключ не найден
+gpg: [stdin]: clearsign failed: секретный ключ не найден
+debsign: gpg error occurred!  Aborting....

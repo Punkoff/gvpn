@@ -1,0 +1,14 @@
+Source: gvpn-daemon
+Section: web
+Priority: optional
+Maintainer: John Pankov <pankov@adsl.by>
+Build-Depends: debhelper (>= 5), autotools-dev
+Standards-Version: 3.7.2
+
+Package: gvpn-daemon
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, pptp-linux, iproute
+Recommends: gvpn|gvpn-qt
+Description: GVPN daemon
+ A GVPN backend daemon
+ This daemon is a wrapper for pptp-linux and performs some additional operations, such as route rebuilding, statistics collection and others.

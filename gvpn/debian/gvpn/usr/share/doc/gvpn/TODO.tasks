@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<gtodo>
+  <category title="Personal" place="0">
+    <item>
+      <attribute id="1220969585" priority="1" done="0" start_date="733294" enddate="99999999" notify="0" endtime="-60" last_edited="1220969585"/>
+      <summary>Main window icon resolving when packaged</summary>
+      <comment/>
+    </item>
+    <item>
+      <attribute id="1220969594" priority="1" done="0" start_date="733294" enddate="99999999" notify="0" endtime="-60" last_edited="1220969594"/>
+      <summary>About dialog icon</summary>
+      <comment></comment>
+    </item>
+  </category>
+  <category title="Business" place="1"/>
+  <category title="Unfiled" place="2"/>
+</gtodo>

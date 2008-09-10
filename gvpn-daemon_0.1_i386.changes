@@ -1,0 +1,20 @@
+Format: 1.7
+Date: Mon, 01 Sep 2008 17:34:54 +0300
+Source: gvpn-daemon
+Binary: gvpn-daemon
+Architecture: source i386
+Version: 0.1
+Distribution: hardy
+Urgency: low
+Maintainer: John Pankov <pankov@adsl.by>
+Changed-By: John Pankov <pankov@adsl.by>
+Description: 
+ gvpn-daemon - GVPN daemon
+Changes: 
+ gvpn-daemon (0.1) hardy; urgency=low
+ .
+   * Initial release
+Files: 
+ f888ce60442e0f789a49b9c3f5d416fb 267 web optional gvpn-daemon_0.1.dsc
+ 99e54f74504175885b852a09300f5306 77586 web optional gvpn-daemon_0.1.tar.gz
+ dc3c7911eca760cd5b6df77b4a48629e 25768 web optional gvpn-daemon_0.1_i386.deb
