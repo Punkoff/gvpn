@@ -21,7 +21,7 @@ extern int CommServerStatus;
 	if (strlen(s1)<strlen(s2)) return -1;
 	for (p=0;p<strlen(s2);p++) if (s1[p]!=s2[p]) return -1;
 	return 0;
-}*/
+	}*/
 
 void PPTPNewClient() { //Notify newly connected client about situation
 	if (PPTPStatus==0) CommServerSendString ("sd"); 
@@ -76,11 +76,10 @@ void PPTPLaunch() {
 		strcpy(buffer,"");
 		
 		if (HasData(fileno(out),100)!= 0) {
-			printf("got data\n");
 			buffer[read(fileno(out), buffer, 1024)]=0;
 			strcpy(tmp,"d");
 			strcat(tmp,buffer);
-			printf("pptp: %s",buffer);
+			//printf("[pptp] %s",buffer);
 			CommServerSendString(tmp);
 			
 			ParseFromPPTP(buffer);
@@ -97,7 +96,6 @@ void PPTPLaunch() {
 				return;
 			}
 			
-			printf("Received: %s\n",str);
 			PPTPProcess (str);
 			if (strcmp(str,"abort")==0) {
 				PPTPTerminate();
@@ -110,7 +108,7 @@ void PPTPLaunch() {
 
 void ParseFromPPTP(char* buffer) {
 	char tmp[256];
-
+	
 	if (strstr(buffer,"Using interface")!=NULL) {   //Detected PPP device
 		strcpy(buffer,"odDevice: /dev/");
 		strcpy(PPTPDev,buffer+16);
@@ -245,37 +243,21 @@ void PPTPProcess(char* cmd){
 		FILE *out;
 		char buffer[1024];
 		char c[1024];
-		strcpy(c,"ifconfig ");
-		strcat(c,PPTPDev);
-		out = popen(c, "r");
-		while (!feof(out)) {
-			fgets(buffer, 256, out);
-			if (strstr(buffer,"RX bytes")!=NULL) { //Our line
-				int bp=0,p=0;
-				while (buffer[p]!='(') p++; 
-				p+=1;
-				while (buffer[p]!=')') {
-					PPTPRcvd[bp]=buffer[p];
-					p++;bp++;
-				}
-				PPTPRcvd[bp]=0;
-				bp=0;							  //Sent
-				while (buffer[p]!='(') p++; 
-				p+=1;
-				while (buffer[p]!=')') {
-					PPTPSent[bp]=buffer[p];
-					p++;bp++;
-				}
-				PPTPSent[bp]=0;
-			}
-		}
-		printf("Received: %s, sent: %s\n",PPTPRcvd,PPTPSent);//Send data to the client
-		strcpy(buffer,"os");
-		strcat(buffer,PPTPSent);
-		CommServerSendString (buffer);
-		strcpy(buffer,"oc");
-		strcat(buffer,PPTPRcvd);
-		CommServerSendString (buffer);
+		
+		sprintf(buffer, "ifconfig %s|grep \"RX bytes\"|cut -d\' \' -f13,14", PPTPDev);
+		out = popen(buffer, "r");
+		while (!feof(out)) fgets(PPTPRcvd, 256, out);
+		pclose(out);
+		PPTPRcvd[strlen(PPTPRcvd)-2]=0; //Remove braces
+		sprintf(c,"oc%s",PPTPRcvd+1);
+		CommServerSendString (c);
+		sprintf(buffer, "ifconfig %s|grep \"TX bytes\"|cut -d\' \' -f18,19", PPTPDev);
+		out = popen(buffer, "r");
+		while (!feof(out)) fgets(PPTPSent, 256, out);
+		pclose(out);
+		PPTPSent[strlen(PPTPSent)-2]=0; //Remove braces
+		sprintf(c,"os%s",PPTPSent+1);
+		CommServerSendString (c);
 	}
 }
 

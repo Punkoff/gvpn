@@ -37,7 +37,6 @@ void Process() {
 		}
 		
 		if (!done) {
-			printf("Received: %s\n",str);
 			PPTPProcess (str);  //if 'connect' will be received, we'll be stuck 
 								//in here until 'abort'. See PPTPConnect()
 		}

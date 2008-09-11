@@ -9,6 +9,21 @@
     <item>
       <attribute id="1220969594" priority="1" done="0" start_date="733294" enddate="99999999" notify="0" endtime="-60" last_edited="1220969594"/>
       <summary>About dialog icon</summary>
+      <comment/>
+    </item>
+    <item>
+      <attribute id="1221143459" priority="1" done="0" start_date="733296" enddate="99999999" notify="0" endtime="-60" last_edited="1221143459"/>
+      <summary>Foolproof</summary>
+      <comment></comment>
+    </item>
+    <item>
+      <attribute id="1221143465" priority="1" done="0" start_date="733296" enddate="99999999" notify="0" endtime="-60" last_edited="1221143465"/>
+      <summary>Utils...?</summary>
+      <comment></comment>
+    </item>
+    <item>
+      <attribute id="1221143474" priority="1" done="0" start_date="733296" enddate="99999999" notify="0" endtime="-60" last_edited="1221143474"/>
+      <summary>Show Debug option</summary>
       <comment></comment>
     </item>
   </category>
