@@ -1,7 +1,7 @@
 #include "common.h"
 
 void error(char* str){
-	printf(str);
+	printf("E: %s\n",str);
 	exit(EXIT_FAILURE);
 }
 int HasData(int file, int timeout) {
@@ -10,6 +10,6 @@ int HasData(int file, int timeout) {
 	pfd.fd=file;
 	pfd.events=3;
 	poll(&pfd,1,timeout);
-		
+	
 	return ((pfd.revents & 3)!= 0)?1:0;
 }

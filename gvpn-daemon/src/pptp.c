@@ -16,13 +16,6 @@ static int PPTPStatus=0; //0=disconnected;1=connecting;2=connected
 extern int CommServerConnection;
 extern int CommServerStatus;
 
-/*int begcmp(char* s1,char* s2) {
-	int p=0;
-	if (strlen(s1)<strlen(s2)) return -1;
-	for (p=0;p<strlen(s2);p++) if (s1[p]!=s2[p]) return -1;
-	return 0;
-	}*/
-
 void PPTPNewClient() { //Notify newly connected client about situation
 	if (PPTPStatus==0) CommServerSendString ("sd"); 
 	else {
@@ -52,6 +45,8 @@ void PPTPLaunch() {
 	char cmd[1024];
 	char tmp[1024];
 	
+	printf("\n");
+	
 	PPTPStatus=1;
 	
 	PPTPSaveDefRoute();
@@ -60,13 +55,15 @@ void PPTPLaunch() {
 	sprintf(cmd,"pptp %s defaultroute replacedefaultroute nodetach name %s password %s", PPTPGateway, PPTPLogin, PPTPPassword);
 	strcpy(tmp,"d");
 	strcat(tmp,cmd);
-	printf("Command: %s\n",cmd);
+	
 	CommServerSendString("dCommand line:");
 	CommServerSendString(tmp);
 	CommServerSendString("mConnecting");
 	
+	printf("Created route to PPTP gateway\n");
 	PPTPCreateModemRoute();
 	
+	printf("Launching PPTP\n");
 	out = popen(cmd, "r");
 	if (out==NULL) printf("No pipe!\n");
 	
@@ -118,10 +115,12 @@ void ParseFromPPTP(char* buffer) {
 		CommServerSendString ("pa"); //Stage A
 		CommServerSendString ("sConnecting");
 		PPTPStatus=1;
+		printf("Connecting: %s\n", PPTPDev);
 	}
 	if (strstr(buffer,"authentication succeeded")!=NULL) {
 		CommServerSendString ("pb"); //Stage B
 		CommServerSendString ("sAuthorized");
+		printf("Authorized\n");
 	}
 	if (strstr(buffer,"local  IP address")!=NULL) { //IPs detected, connected
 		char* p=0;
@@ -149,8 +148,11 @@ void ParseFromPPTP(char* buffer) {
 		CommServerSendString (tmp);
 		
 		PPTPStatus=2;
+		
+		printf("Connection established\nLocal  IP: %s\nRemote IP: %s\n", PPTPLocalIP, PPTPRemoteIP);
 	}
 	if (strstr(buffer,"Terminating")!=NULL) { //PPTP down
+		printf("Connection down\n");
 		CommServerSendString ("p0"); //Stage 0
 		PPTPTerminate();
 		return;
@@ -159,7 +161,7 @@ void ParseFromPPTP(char* buffer) {
 
 void PPTPCreateModemRoute() { //Create '<modem> via <gw> dev <dev>'
 	char s[256];
-	sprintf(s, "ip route add %s via %s dev %s", PPTPGateway, PPTPLANGW, PPTPLANDev);
+	sprintf(s, "ip route add %s via %s dev %s > /dev/null", PPTPGateway, PPTPLANGW, PPTPLANDev);
 	system(s);
 }
 
@@ -180,13 +182,13 @@ void PPTPGetLANGW() {
 }
 
 void PPTPDelDefRoute(){
-	system("route del default");
+	system("route del default > /dev/null");
 	printf("Deleted default route\n");
 }
 
 void PPTPRestoreDefRoute(){
 	char s[256];
-	sprintf(s, "ip route add default via %s dev %s", PPTPLANGW, PPTPLANDev);
+	sprintf(s, "ip route add default via %s dev %s > /dev/null", PPTPLANGW, PPTPLANDev);
 	system(s);
 	printf("Restored default route\n");
 }
@@ -202,25 +204,26 @@ void PPTPProcess(char* cmd){
 	if (mode!=0){
 		switch (mode) {
 			case 1: strcpy(PPTPGateway,cmd);
-			printf("Using gateway: %s\n",PPTPGateway);
+			printf("Gateway: %s\n",PPTPGateway);
 			break;
 			case 2: strcpy(PPTPLogin,cmd);
-			printf("Using login: %s\n",PPTPLogin);
+			printf("Login: %s\n",PPTPLogin);
 			break;
 			case 3: strcpy(PPTPPassword,cmd);
-			printf("Using password: %s\n",PPTPPassword);
+			printf("Password: %s\n",PPTPPassword);
 			break;
 			case 4: strcpy(PPTPLANDev, cmd);
-			printf("Using device: %s\n",PPTPLANDev);
+			printf("LAN Device: %s\n",PPTPLANDev);
 			break;
 			case 5: strcpy(PPTPLANGW, cmd);
-			printf("Using LAN gateway: %s\n",PPTPLANGW);
+			printf("LAN Gateway: %s\n",PPTPLANGW);
 			break;
 		}
 		mode=0;
 		return;
 	}
 	if (strcmp(cmd,"connect")==0){
+		printf("\nConnecting\n");
 		CommServerSendString("mLaunching PPTP");
 		PPTPLaunch();
 	}
@@ -237,8 +240,11 @@ void PPTPProcess(char* cmd){
 	if (strcmp(cmd,"setpassword")==0)   mode=3;
 	if (strcmp(cmd,"setdev")==0)		mode=4;
 	if (strcmp(cmd,"setlangw")==0)		mode=5;
-	if (strcmp(cmd,"abort")==0)		PPTPTerminate();
-	
+	if (strcmp(cmd,"abort")==0)		
+	{
+		printf("\nDisonnecting\n");
+		PPTPTerminate();
+	}
 	if (strcmp(cmd,"stat")==0){
 		FILE *out;
 		char buffer[1024];

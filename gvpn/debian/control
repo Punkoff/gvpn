@@ -7,6 +7,6 @@ Standards-Version: 3.7.2
 
 Package: gvpn
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, gvpn-daemon (>= 0.1), gvpn-daemon (<< 0.2)
+Depends: ${shlibs:Depends}, ${misc:Depends}, gvpn-daemon (= 0.1), menu
 Description: GVPN PPTP client
  An easy to use Microsoft PPTP client (GTK+ version) 

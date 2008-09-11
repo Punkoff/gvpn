@@ -36,6 +36,7 @@
 GladeXML *gxml;
 GtkWidget *window;
 GtkWidget* wndSettings;
+GdkWindow* graph;
 
 char RDir[256];
 
@@ -97,6 +98,12 @@ void ErrorBox(char* err, int ftl) {
 	while (fatal!=-1) {
 		gtk_main_iteration();
 	}
+}
+
+
+void GetFile(char* buf, char* file) {
+	strcpy(buf,RDir);
+	strcat(buf,file);
 }
 
 #include "notify.c"
@@ -188,10 +195,10 @@ int Stat() {
 //Initial connect to daemon
 int Connect() {
 	if (CommClientInit("/tmp/gvpn-daemon")==0) {
-		ErrorBox("Cannot create socket", 1);
+		ErrorBox("Cannot create socket. Check your account permissions", 1);
 	}
 	if (CommClientConnect()==0) {
-		ErrorBox("Cannot connect to gvpn-daemon. Check if it is running.", 1);	
+		ErrorBox("Cannot connect to gvpn-daemon. Check if it is running.\nTry running /etc/init.d/gvpn-daemon start", 1);	
 	}
 	ConsoleAdd("Connected to daemon\n");
 	char s[256];
@@ -201,12 +208,12 @@ int Connect() {
 	gtk_widget_show (window);
 	gtk_timeout_add (100, (GtkFunction)Check, NULL); //Run the connection manager 
 	
-	
 	return 0;
 }
 
 int main (int argc, char *argv[])
 {		
+	char buf[256];
 	
 #ifdef ENABLE_NLS
 	bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -233,6 +240,9 @@ int main (int argc, char *argv[])
 	}
 	printf("Loaded glade\n");
 		
+	GetFile (buf, "/icon.png");
+	gtk_window_set_icon_from_file (window,buf,NULL);
+	
 	NotifyInit();
 	
 	glade_xml_signal_autoconnect (gxml);

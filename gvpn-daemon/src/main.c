@@ -12,6 +12,7 @@
 #include "comm.h"
 #include "daemon.h"
 #include "pptp.h"
+#include "config.h"
 
 char buffer[256];
 int fl_terminate=0;
@@ -85,26 +86,27 @@ int main( int argc, char *argv[] ) {
 	
 	remove("/tmp/gvpn-daemon");
 	
+	printf("GVPN Daemon %s\n",PACKAGE_VERSION);
 	if (fl_daemonize==1) daemonize();
 	
     while (fl_terminate==0) {
+		printf("_______________________________\nCreating server...\n");
 		if (CommServerInit("/tmp/gvpn-daemon")==0) {
 			perror("ServerInit");
 		} else {
+			printf("Waiting for client...\n");
 			if (CommServerAccept()==0) {
 				perror("ServerAccept");
 			} else {
-				printf("Received connection\n");
+				printf("Client connected\n");
 				Process();
-				printf("Dropped connection\n");
+				printf("Client disconnected\n");
 			}
 			CommServerClose();
 		}
 	}
 		
-	//remove(lockfile);
+	printf("Terminating...\n\n");
 		
-    syslog( LOG_NOTICE, "daemon terminated" );
-    closelog();
     return 0;
 }

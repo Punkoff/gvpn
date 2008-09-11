@@ -15,6 +15,7 @@ void NotifyActivate() {
 void NotifyPopup(GtkStatusIcon *status_icon, guint button,
 				 guint32 activate_time, gpointer popUpMenu) {
 					 
+					 
 	gtk_menu_popup(GTK_MENU(glade_xml_get_widget (gxml, "menuTray")), NULL,
 				   NULL, gtk_status_icon_position_menu, Notify,
 				   button, activate_time);

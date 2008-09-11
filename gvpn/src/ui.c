@@ -80,6 +80,7 @@ void UIInit() {
 	gtk_label_set_text(actlabel,"");
 	gtk_label_set_text(dtlabel,"Not connected");
 	
+	graph=GTK_WIDGET(glade_xml_get_widget (gxml, "dra"))->window;
 }
 
 void SetButtons() {
