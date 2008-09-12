@@ -4,8 +4,8 @@ d28cc43884394d79172e89e8feaa39cb  usr/doc/gvpn_daemon/INSTALL
 d41d8cd98f00b204e9800998ecf8427e  usr/doc/gvpn_daemon/NEWS
 d41d8cd98f00b204e9800998ecf8427e  usr/doc/gvpn_daemon/README
 d32239bcb673463ab874e80d47fae504  usr/doc/gvpn_daemon/COPYING
-cd651109d39280355e26a91c72d2defd  usr/bin/gvpn_daemon
-a04def3952b1ea4173e8198c04debe34  usr/share/doc/gvpn-daemon/changelog.Debian.gz
-c2821de556eaf01d39fa9fcd9d01971b  usr/share/doc/gvpn-daemon/changelog.gz
+6465ec4227fc8c22d8d5fdfc68b8bdc8  usr/bin/gvpn_daemon
+ca5cd1decef747e6b70f01bb6878e40b  usr/share/doc/gvpn-daemon/changelog.Debian.gz
+4d59ef2cd5122e2179650c837c288132  usr/share/doc/gvpn-daemon/changelog.gz
 d539c518757d7338d25a5dfe19037ed9  usr/share/doc/gvpn-daemon/copyright
-3e8636536182b958fab8673a4930b950  usr/share/doc/gvpn-daemon/TODO.tasks
+8b03c92b8006aeed22062327479e21ff  usr/share/doc/gvpn-daemon/TODO.tasks

@@ -16,7 +16,13 @@ static int PPTPStatus=0; //0=disconnected;1=connecting;2=connected
 extern int CommServerConnection;
 extern int CommServerStatus;
 
+void PPTPError(char* str) { //Send error message
+	char buf[1024];
+	sprintf(buf, "e%s", str);
+	CommServerSendString(buf);
+}
 void PPTPNewClient() { //Notify newly connected client about situation
+	PPTPError ("Internal error");
 	if (PPTPStatus==0) CommServerSendString ("sd"); 
 	else {
 		CommServerSendString ("sc");
@@ -39,8 +45,28 @@ void PPTPNewClient() { //Notify newly connected client about situation
 	strcpy(PPTPLANGW,""); //Clear LAN gateway
 }
 
-void PPTPLaunch() {
-	FILE *out;
+FILE* PPTPFork(FILE* out, char* cmd) {
+	int desc[2];
+	
+	pipe(desc); //Build a pipe
+	out=fdopen(desc[0], "r");
+	
+	int pid=fork();
+	
+	if (pid==0) {
+		dup2(desc[1],2); //Attach the pipe to stdout/err
+		dup2(desc[1],1);
+		system(cmd);
+		exit(0);
+	}
+	
+	sleep(3);
+	
+	return out;
+}
+
+void PPTPLaunch() { //Connect
+	FILE *out=NULL;
 	char buffer[1024];
 	char cmd[1024];
 	char tmp[1024];
@@ -64,8 +90,14 @@ void PPTPLaunch() {
 	PPTPCreateModemRoute();
 	
 	printf("Launching PPTP\n");
-	out = popen(cmd, "r");
-	if (out==NULL) printf("No pipe!\n");
+	
+	out=PPTPFork(out, cmd);
+	if (out==NULL) {
+		printf("Pipe creating failed!\n");
+		CommServerSendString ("ei");
+		PPTPTerminate ();
+		return;
+	}	
 	
 	PPTPStatus=2;
 	
@@ -76,7 +108,6 @@ void PPTPLaunch() {
 			buffer[read(fileno(out), buffer, 1024)]=0;
 			strcpy(tmp,"d");
 			strcat(tmp,buffer);
-			//printf("[pptp] %s",buffer);
 			CommServerSendString(tmp);
 			
 			ParseFromPPTP(buffer);
@@ -122,6 +153,12 @@ void ParseFromPPTP(char* buffer) {
 		CommServerSendString ("sAuthorized");
 		printf("Authorized\n");
 	}
+	if (strstr(buffer,"authentication fail")!=NULL) {
+		CommServerSendString ("p0"); //Stage 0
+		CommServerSendString ("ea");
+		printf("Authorization failure\n");
+		PPTPTerminate ();
+	}
 	if (strstr(buffer,"local  IP address")!=NULL) { //IPs detected, connected
 		char* p=0;
 		
@@ -157,6 +194,24 @@ void ParseFromPPTP(char* buffer) {
 		PPTPTerminate();
 		return;
 	}
+	if (strstr(buffer,"anon fatal")!=NULL) { //PPTP down
+		printf("Fatal error:");
+		if (strstr(buffer, "HOST NOT FOUND")!=NULL) {
+			printf(" host not found");
+			CommServerSendString ("ec");
+		}
+		CommServerSendString ("p0"); //Stage 0
+		printf("\n");
+		PPTPTerminate();
+		return;
+	}
+	if (strstr(buffer,"terminat")!=NULL) { //PPTP down
+		printf("Connection down\n");
+		CommServerSendString ("ec");
+		CommServerSendString ("p0"); //Stage 0
+		PPTPTerminate();
+		return;
+	}
 }
 
 void PPTPCreateModemRoute() { //Create '<modem> via <gw> dev <dev>'
@@ -170,7 +225,7 @@ void PPTPSaveDefRoute(){ //Save default route to /tmp/gvpn-def-route
 	printf("Saved default route\n");
 }
 
-void PPTPGetLANGW() {
+void PPTPGetLANGW() { //Get LAN gateway
 	if (strcmp(PPTPLANGW,"")!=0) return; //Run away, if a custom gateway was specified
 	
 	system("cat /tmp/gvpn-def-route|cut -d' ' -f3 > /tmp/gvpn-lan-gw"); 

@@ -7,4 +7,4 @@ Maintainer: John Pankov <pankov@adsl.by>
 Standards-Version: 3.7.2
 Build-Depends: autotools-dev, debhelper (>= 5)
 Files: 
- 4198420119aa7fd8ecf601238234e06c 725226 gvpn_0.1.tar.gz
+ 2d29bc543f2a4487d826fb05c3d6f763 383856 gvpn_0.1.tar.gz

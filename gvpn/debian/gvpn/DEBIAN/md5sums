@@ -1,12 +1,12 @@
-a9b5fb06e4ea94499794b29b8ad72e83  usr/bin/gvpn
+5f408069cfb3fafbe00a6cafa0e1061d  usr/bin/gvpn
 16bc10460e546c7776d1ec9f8286fde5  usr/share/menu/gvpn
 d41283ab348f57d06d6d6cc477c5bc45  usr/share/applications/GVPN.desktop
-c3e9da571c8c17ef8372e3dd7bcf398e  usr/share/doc/gvpn/changelog.Debian.gz
-c2821de556eaf01d39fa9fcd9d01971b  usr/share/doc/gvpn/changelog.gz
+b4c17a6d894a615357c72536be03dbd0  usr/share/doc/gvpn/changelog.Debian.gz
+92da9a6ba7546af284f2c707e1c53521  usr/share/doc/gvpn/changelog.gz
 bb8ae768ab208107df2eba0d9348f214  usr/share/doc/gvpn/copyright
-e7b72a263b2e2aae712d315352d1291d  usr/share/doc/gvpn/TODO.tasks
+c1673f24639db6bf60090f40e51c4358  usr/share/doc/gvpn/TODO.tasks
 62a486e4442a89df6c0d8f3c26fc1bbe  usr/share/gvpn/icon_c.png
 de4e576b284692a3ebd9715f499d73cc  usr/share/gvpn/icon.png
-bd1ba0e7eb2e4b2500430c3cfe9e0ccf  usr/share/gvpn/gvpn.glade
+a23ebe56090cbdb1316aed9c977db18d  usr/share/gvpn/gvpn.glade
 288865dca4bf8421c47db6a50c77bb16  usr/share/gvpn/icon_d.png
 5b16a073dfe29966563a8b7a34488274  usr/share/gvpn/callbacks.c

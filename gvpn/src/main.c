@@ -47,11 +47,9 @@ char constext[32768]="";
 int fatal=1;
 const char *authors[] =
 {
-"John Pankov <pankov@adsl.by>",
-NULL
+	"John Pankov <pankov@adsl.by>",
+	NULL
 };
-
-	
 
 #include "comm.h"
 #include "cfg.h"
@@ -70,31 +68,30 @@ static void ConsoleAdd(char* str){ //Add a line to ConsoleAdd
 	strcat(constext,str);
 	gtk_text_buffer_set_text (tb, constext, -1);
 	gtk_text_buffer_get_end_iter(tb, &ti);
-		
+	
 	gtk_widget_set_size_request(window, 360,240);
 	gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW (txt), &ti, 0, 0, 0, 0);
 	gtk_main_iteration_do(0);
 	
 	gtk_text_buffer_get_end_iter(tb, &ti);
-		
+	
 	gtk_widget_set_size_request(window, 360,240);
 	gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW (txt), &ti, 0, 0, 0, 0);
 	
 }
-static void ErrorBox_Signal (GtkWidget* wnd)
-{
+static void ErrorBox_Signal (GtkWidget* wnd) {
 	gtk_widget_hide(wnd);
 	if (fatal==1) exit(1);
 	fatal=-1;
 }
 
-//Shows error messagebox. ftl=1 will cause exit(1)
-void ErrorBox(char* err, int ftl) { 
+
+void ErrorBox(char* err, int ftl) { //Shows error messagebox. ftl=1 will cause exit(1)
 	GtkWidget* gw=gtk_message_dialog_new(GTK_WINDOW(window),1,GTK_MESSAGE_ERROR,GTK_BUTTONS_OK,err);
- 	gtk_widget_show(gw);
+	gtk_widget_show(gw);
 	fatal=ftl;
 	gtk_signal_connect (GTK_OBJECT (gw), "response", GTK_SIGNAL_FUNC (ErrorBox_Signal),
-		NULL);
+						NULL);
 	while (fatal!=-1) {
 		gtk_main_iteration();
 	}
@@ -106,12 +103,12 @@ void GetFile(char* buf, char* file) {
 	strcat(buf,file);
 }
 
+
 #include "notify.c"
 #include "ui.c"
 #include "handlers.c"
 
-//Process a message from daemon
-void Process(char* cmd) { 
+void Process(char* cmd) { //Process a message from daemon
 	char out[256];
 	strcpy(out,cmd);
 	printf("Received: %s\n",cmd);
@@ -124,6 +121,22 @@ void Process(char* cmd) {
 		strcpy(out,cmd+1);
 		strcat(out,"\n");
 		ConsoleAdd(out);
+	}
+	if (out[0]=='e') {
+		strcpy(out,cmd+1);
+		strcat(out,"\n");
+		ConsoleAdd("Error:\n");
+		int ec=0;
+		switch (out[0]) {
+			case 'i':
+				ec=0;break; //Uknown error
+			case 'c':
+				ec=1;break; //Connection error
+			case 'a':
+				ec=2;break; //Authorization error
+		}
+		ConsoleAdd (Errors[ec]);
+		ErrorBox (Errors[ec], FALSE);
 	}
 	if (out[0]=='o') {
 		if (out[1]=='d'){
@@ -159,8 +172,7 @@ void Process(char* cmd) {
 	}
 }
 
-//Check for messages from daemon & update labels
-int Check(){ 
+int Check(){ //Check for messages from daemon & update labels
 	if (Connected==-1) return 1;
 	if (CommClientStatus<2) { //Lost connection
 		ErrorBox("Lost connection to daemon", 1);
@@ -186,14 +198,13 @@ int Check(){
 	return 1;
 }
 
-//Send stat requests
-int Stat() {
+int Stat() {//Send stat requests
 	if (Connected==1) CommClientSendString ("stat");
 	return 1;
 }
 
-//Initial connect to daemon
-int Connect() {
+
+int Connect() {//Initial connect to daemon
 	if (CommClientInit("/tmp/gvpn-daemon")==0) {
 		ErrorBox("Cannot create socket. Check your account permissions", 1);
 	}
@@ -211,8 +222,7 @@ int Connect() {
 	return 0;
 }
 
-int main (int argc, char *argv[])
-{		
+int main (int argc, char *argv[]) {		
 	char buf[256];
 	
 #ifdef ENABLE_NLS
@@ -224,36 +234,38 @@ int main (int argc, char *argv[])
 	CfgLoad();
 	
 	gnome_program_init (PACKAGE, VERSION, LIBGNOMEUI_MODULE,
-                      argc, argv,
-                      GNOME_PARAM_APP_DATADIR, PACKAGE_DATA_DIR,
-                      NULL);
+						argc, argv,
+						GNOME_PARAM_APP_DATADIR, PACKAGE_DATA_DIR,
+						NULL);
 	
+	//Load Glade XML and by the way, resolve installation directory
 	if ((gxml = glade_xml_new (GLADE_FILE1, NULL, NULL))==NULL) {
-		printf("Not loaded glade\n");
 		if ((gxml = glade_xml_new (GLADE_FILE, NULL, NULL))==NULL) {
-			printf("Not loaded glade\n");
+			printf("Cannot load Glade XML file\n");
+			return 1;
 		} else {
 			strcpy(RDir,"/usr/share/gvpn");
 		}
 	} else {
 		getcwd (RDir,256);
 	}
-	printf("Loaded glade\n");
-		
-	GetFile (buf, "/icon.png");
-	gtk_window_set_icon_from_file (window,buf,NULL);
 	
 	NotifyInit();
 	
 	glade_xml_signal_autoconnect (gxml);
 	window = glade_xml_get_widget (gxml, "wndMain");
 	wndSettings = glade_xml_get_widget (gxml, "dlgSettings");
-		
-	gtk_timeout_add (300, (GtkFunction)Connect, NULL);
+	
+	GetFile (buf, "/icon.png");
+	gtk_window_set_icon_from_file (window,buf,NULL);
+	
+	gtk_timeout_add (300, (GtkFunction)Connect, NULL); //Run connect AFTER gtk_main started!
 	gtk_timeout_add (2000, (GtkFunction)Stat, NULL);
 	
 	UIInit();
-	printf("main\n");
+	
 	gtk_main ();
 	return 0;
 }
+
+

@@ -1,3 +1,22 @@
+2008-09-12  John Pankov  <john@punkoff>
+
+	reviewed by: <delete if not using a buddy>
+
+	* gvpn-daemon/src/.deps/main.Po:
+	* gvpn-daemon/src/daemon.c~:
+	* gvpn-daemon/src/main.c~:
+	* gvpn-daemon/src/pptp.c:
+	* gvpn/config.log:
+	* gvpn/intltool-merge:
+	* gvpn/po/Makefile:
+	* gvpn/po/POTFILES:
+	* gvpn/po/POTFILES.in:
+	* gvpn/po/missing:
+	* gvpn/src/main.c:
+	* gvpn/src/notify.c~:
+	* gvpn/src/ui.c:
+	* gvpn/src/ui.c~:
+
 2007-12-28  Johannes Schmid,,,  <jhs@idefix>
 
 	reviewed by: <delete if not using a buddy>

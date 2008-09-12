@@ -15,6 +15,6 @@ Changes:
  .
    * Initial release
 Files: 
- f888ce60442e0f789a49b9c3f5d416fb 267 web optional gvpn-daemon_0.1.dsc
- 99e54f74504175885b852a09300f5306 77586 web optional gvpn-daemon_0.1.tar.gz
- dc3c7911eca760cd5b6df77b4a48629e 25768 web optional gvpn-daemon_0.1_i386.deb
+ 0bafc47af849642695712b8fa33493ad 267 web optional gvpn-daemon_0.1.dsc
+ d5be16a84ca94e5fefdf41201c74c308 67982 web optional gvpn-daemon_0.1.tar.gz
+ 227cdff8c2b2f912242574bfa9afbb09 26010 web optional gvpn-daemon_0.1_i386.deb

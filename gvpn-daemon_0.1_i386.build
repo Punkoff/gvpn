@@ -5,9 +5,25 @@ rm -f build-stamp
 # Add here commands to clean up after the build process.
 /usr/bin/make distclean
 make[1]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon'
-make[1]: *** Нет правила для сборки цели `distclean'.  Останов.
+Making distclean in src
+make[2]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon/src'
+test -z "gvpn_daemon" || rm -f gvpn_daemon
+rm -f *.o
+rm -f *.tab.c
+test -z "" || rm -f 
+rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
+rm -rf ./.deps
+rm -f Makefile
+make[2]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon/src'
+Making distclean in .
+make[2]: Вход в каталог `/home/john/work/gvpn/gvpn-daemon'
+test -z "" || rm -f 
+rm -f config.h stamp-h1
+rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
+make[2]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon'
+rm -f config.status config.cache config.log configure.lineno config.status.lineno
+rm -f Makefile
 make[1]: Выход из каталога `/home/john/work/gvpn/gvpn-daemon'
-make: [clean] Ошибка 2 (игнорирована)
 rm -f config.sub config.guess
 dh_clean 
  dpkg-source -b gvpn-daemon
@@ -140,7 +156,6 @@ Now running lintian...
 E: gvpn-daemon_0.1_i386.changes: bad-distribution-in-changes-file hardy
 W: gvpn-daemon source: debian-rules-ignores-make-clean-error line 48
 W: gvpn-daemon source: out-of-date-standards-version 3.7.2 (current is 3.7.3)
-W: gvpn-daemon source: configure-generated-file-in-source config.log
 W: gvpn-daemon: binary-without-manpage usr/bin/gvpn_daemon
 E: gvpn-daemon: FSSTND-dir-in-usr usr/doc/
 W: gvpn-daemon: extra-license-file usr/doc/gvpn_daemon/COPYING

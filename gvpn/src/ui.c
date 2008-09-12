@@ -1,4 +1,4 @@
-	
+
 GtkLabel *stlabel;
 GtkLabel *actlabel;
 GtkLabel *dtlabel;
@@ -7,6 +7,9 @@ GtkProgress *pbr;
 GtkComboBox *cbx;
 GtkToolButton *tbConnect;
 GtkToolButton *tbDisconnect;
+
+char Errors[10][1024];
+
 
 void UpdateDataLabel(){
 	char s[256];
@@ -35,7 +38,7 @@ void UpdateDataLabel(){
 }
 
 void UIInit() {
-		//Set styles
+	//Set styles
 	stlabel=GTK_LABEL(glade_xml_get_widget (gxml, "stlabel"));
 	dtlabel=GTK_LABEL(glade_xml_get_widget (gxml, "dtlabel"));
 	devlabel=GTK_LABEL(glade_xml_get_widget (gxml, "devlabel"));
@@ -51,11 +54,11 @@ void UIInit() {
 	gtk_widget_modify_font (GTK_WIDGET(devlabel), font_desc);
 	pango_font_description_free (font_desc);
 	
-	gtk_window_set_icon_from_file(GTK_WINDOW(window), "icon.png", NULL);
+	//gtk_window_set_icon_from_file(GTK_WINDOW(window), "icon.png", NULL);
 	cbx=GTK_COMBO_BOX(gtk_combo_box_new_text ());
 	gtk_table_attach(GTK_TABLE(glade_xml_get_widget (gxml, "table1")), GTK_WIDGET(cbx), 1,2,3,4, GTK_FILL,GTK_EXPAND,0,0);
 	gtk_widget_show (GTK_WIDGET(cbx));
-
+	
 	//Read devices list
 	FILE* n=fopen("/etc/network/interfaces","r");
 	int i=0,a=0;//Saved device
@@ -70,7 +73,7 @@ void UIInit() {
 			gtk_combo_box_append_text(cbx, buf+6);
 			i++;
 		}
-    }
+	}
 	fclose(n);
 	gtk_combo_box_set_active (cbx, a);
 	
@@ -81,6 +84,12 @@ void UIInit() {
 	gtk_label_set_text(dtlabel,"Not connected");
 	
 	graph=GTK_WIDGET(glade_xml_get_widget (gxml, "dra"))->window;
+	
+	strcpy(Errors[0],"Internal error");
+	strcpy(Errors[1],"Connection error.\nServer unavailable.");
+	strcpy(Errors[2],"Authentication error.\nCannot login");
+	strcpy(Errors[3],"Internal error");
+	
 }
 
 void SetButtons() {
