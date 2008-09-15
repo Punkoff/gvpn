@@ -1,0 +1,15 @@
+autoscan: warning: missing AC_CHECK_FUNCS([getcwd]) wanted by: 
+	src/main.c:251
+autoscan: warning: missing AC_CHECK_FUNCS([memset]) wanted by: 
+	src/cfg.c:8
+autoscan: warning: missing AC_CHECK_FUNCS([socket]) wanted by: 
+	src/comm.c:14
+	src/comm.c:105
+autoscan: warning: missing AC_CHECK_HEADERS([fcntl.h]) wanted by: 
+	src/cfg.h:3
+autoscan: warning: missing AC_CHECK_HEADERS([sys/socket.h]) wanted by: 
+	src/comm.h:1
+autoscan: warning: missing AC_C_CONST wanted by: 
+	src/main.c:48
+autoscan: warning: missing AC_PROG_RANLIB wanted by: 
+	ltmain.sh:6910

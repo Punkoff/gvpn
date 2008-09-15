@@ -6,7 +6,7 @@ void on_tbAbout_clicked() {
 	gtk_widget_show (GTK_WIDGET(dlg));
 	fatal=0;
 	gtk_signal_connect (GTK_OBJECT (dlg), "response", GTK_SIGNAL_FUNC (ErrorBox_Signal),
-		NULL);
+						NULL);
 }
 
 
@@ -47,6 +47,10 @@ void on_tbSettings_clicked() {
 	gtk_entry_set_text(GTK_ENTRY(glade_xml_get_widget (gxml, "entry3")),CPW);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "checkbutton1")), (strcmp(CSGW,"")==0)?FALSE:TRUE);
 	gtk_entry_set_text(GTK_ENTRY(glade_xml_get_widget (gxml, "entry5")),CSGW);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "chkRA")), (strcmp(CAC,"")==0)?FALSE:TRUE);
+	gtk_entry_set_text(GTK_ENTRY(glade_xml_get_widget (gxml, "entry4")),CAC);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "chkReconnect")), (CAR==0)?FALSE:TRUE);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "checkbutton2")), (CHC==0)?FALSE:TRUE);
 	gtk_widget_show (wndSettings);
 }
 
@@ -56,7 +60,11 @@ void on_cmdSetOK_clicked() {
 	strcpy(CPW,gtk_entry_get_text(GTK_ENTRY(glade_xml_get_widget (gxml, "entry3"))));
 	strcpy(CDV,gtk_combo_box_get_active_text(cbx));
 	strcpy(CSGW,gtk_entry_get_text(GTK_ENTRY(glade_xml_get_widget (gxml, "entry5"))));
+	strcpy(CAC,gtk_entry_get_text(GTK_ENTRY(glade_xml_get_widget (gxml, "entry4"))));
 	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "checkbutton1")))==FALSE) strcpy(CSGW,"");
+	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "chkRA")))==FALSE) strcpy(CAC,"");
+	CAR=(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "chkReconnect"))))?1:0;
+	CHC=(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "checkbutton2"))))?1:0;
 	gtk_widget_hide (wndSettings);
 	CfgSave();
 }

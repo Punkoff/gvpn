@@ -2,12 +2,12 @@
 /*
  * main.c
  * Copyright (C) John Pankov 2008 <pankov@adsl.by>
- * 
+	 * 
  * main.c is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+	 * 
  * main.c is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -24,9 +24,6 @@
 
 #include <gnome.h>
 #include <glade/glade.h>
-
-#include "callbacks.h"
-
 
 #define GLADE_FILE "/usr/share/gvpn/gvpn.glade"
 #define ICON_FILE PACKAGE_DATA_DIR"/gvpn/icon.png"
@@ -56,7 +53,8 @@ const char *authors[] =
 
 extern int CommClientSocket;
 extern int CommClientStatus;
-extern char CFILE[256],CVPNGW[256],CLogin[256],CPW[256],CSGW[256],CDV[256];
+extern char CFILE[256],CVPNGW[256],CLogin[256],CPW[256],CSGW[256],CDV[256],CAC[256];
+extern int CAR,CHC;
 
 
 static void ConsoleAdd(char* str){ //Add a line to ConsoleAdd
@@ -161,13 +159,13 @@ void Process(char* cmd) { //Process a message from daemon
 		if (out[1]=='a') {
 			gtk_progress_set_value (pbr, 33.33);
 			Connected=2;
-			//gtk_label_set_text(stlabel,"Connecting...");
 		}
 		if (out[1]=='b') gtk_progress_set_value (pbr, 66.66);
 		if (out[1]=='c') {
 			gtk_progress_set_value (pbr, 100.0);
-			//gtk_label_set_text(stlabel,"Connected");
 			Connected=1;
+			if (strcmp(CAC,"")!=0) popen(CAC, "r"); //TODO: Replace popen with smth...
+			if (CHC==1) gtk_widget_hide (window);
 		}
 	}
 }

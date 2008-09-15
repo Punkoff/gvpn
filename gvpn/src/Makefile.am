@@ -19,7 +19,6 @@ gvpn_SOURCES = \
 	callbacks.c\
 	cfg.h \
 	main.c \
-	callbacks.h \
 	cfg.c \
 	comm.c \
 	comm.h 
