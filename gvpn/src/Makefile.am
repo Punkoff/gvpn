@@ -16,7 +16,6 @@ AM_CFLAGS =\
 bin_PROGRAMS = gvpn
 
 gvpn_SOURCES = \
-	callbacks.c\
 	cfg.h \
 	main.c \
 	cfg.c \
@@ -29,7 +28,6 @@ gvpn_LDFLAGS = \
 gvpn_LDADD = $(GVPN_LIBS)
 
 files_DATA = \
-	callbacks.c\
 	gvpn.glade \
 	icon.png \
 	icon_c.png \

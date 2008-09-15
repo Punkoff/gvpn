@@ -34,7 +34,7 @@ main.o main.o: main.c /usr/include/string.h /usr/include/features.h \
   /usr/include/bits/signum.h /usr/include/bits/siginfo.h \
   /usr/include/bits/sigaction.h /usr/include/bits/sigcontext.h \
   /usr/include/bits/sigstack.h /usr/include/bits/sigthread.h \
-  /usr/include/sys/stat.h /usr/include/bits/stat.h pptp.h
+  /usr/include/sys/stat.h /usr/include/bits/stat.h pptp.h ../config.h
 
 /usr/include/string.h:
 
@@ -189,3 +189,5 @@ daemon.h:
 /usr/include/bits/stat.h:
 
 pptp.h:
+
+../config.h:

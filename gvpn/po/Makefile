@@ -36,7 +36,7 @@ libdir = ${exec_prefix}/lib
 DATADIRNAME = share
 itlocaledir = $(prefix)/$(DATADIRNAME)/locale
 subdir = po
-install_sh = $(SHELL) /home/john/work/gvpn/install-sh
+install_sh = $(SHELL) /home/john/work/gvpn/gvpn/install-sh
 # Automake >= 1.8 provides /bin/mkdir -p.
 # Until it can be supposed, use the safe fallback:
 mkdir_p = $(install_sh) -d
@@ -66,8 +66,8 @@ DISTFILES = ChangeLog Makefile.in.in POTFILES.in $(POFILES)
 EXTRA_DISTFILES = POTFILES.skip Makevars LINGUAS
 
 POTFILES = \
-	../src/main.c
-# This comment gets stripped out
+	../src/main.c \
+	../src/gvpn.glade
 
 CATALOGS=$(shell LINGUAS="$(USE_LINGUAS)"; for lang in $$LINGUAS; do printf "$$lang.gmo "; done)
 

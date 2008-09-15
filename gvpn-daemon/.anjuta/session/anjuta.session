@@ -3,7 +3,7 @@
 Geometry=1236x935+36+26
 
 [File Loader]
-Files=file:///home/john/Projects/gvpn-daemon/src/daemon.h#20%%%file:///home/john/Projects/gvpn-daemon/src/daemon.c#44%%%file:///home/john/Projects/gvpn-daemon/src/main.c#89%%%file:///home/john/Projects/gvpn-daemon/src/comm.h#4%%%file:///home/john/Projects/gvpn-daemon/src/comm.c#12%%%file:///home/john/work/gvpn-daemon/src/pptp.c#73%%%file:///home/john/work/gvpn-daemon/src/pptp.h#11
+Files=file:///home/john/work/gvpn/gvpn-daemon/src/pptp.h#18%%%file:///home/john/work/gvpn/gvpn-daemon/src/pptp.c#204
 
 [Execution]
 Program arguments=

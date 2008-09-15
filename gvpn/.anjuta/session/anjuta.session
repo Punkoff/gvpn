@@ -4,13 +4,14 @@ Maximized=1
 Geometry=1244x938+36+26
 
 [File Loader]
-Files=file:///home/john/Projects/gvpn/src/notify.c#6%%%file:///home/john/Projects/gvpn/config.h#59%%%file:///home/john/Projects/gvpn/src/main.c#238%%%file:///home/john/Projects/gvpn/src/cfg.h#9%%%file:///home/john/Projects/gvpn/src/handlers.c#21%%%file:///home/john/Projects/gvpn/src/ui.c#80%%%file:///home/john/Projects/gvpn/src/comm.c#170
+Files=file:///home/john/work/gvpn/gvpn/src/handlers.c#71%%%file:///home/john/work/gvpn/gvpn/src/cfg.c#35%%%file:///home/john/work/gvpn/gvpn/src/notify.c#28%%%file:///home/john/work/gvpn/gvpn/src/ui.c#89%%%file:///home/john/work/gvpn/gvpn/src/main.c#273%%%file:///home/john/work/gvpn/gvpn/src/gvpn.glade
 
 [Execution]
 Program arguments=
 Run in terminal=2
+Last selected uri=file:///home/john/work/gvpn/gvpn/src/gvpn
 Program uri=file:///home/john/Projects/gvpn/src/gvpn
-Stop at beginning=1
+Stop at beginning=2
 
 [Debugger]
-Breakpoint=1:file:///home/john/Projects/gvpn/src/main.c:288:0:%%%1:file:///home/john/Projects/gvpn/src/main.c:267:0:%%%1:file:///home/john/Projects/gvpn/src/notify.c:8:0:%%%1:file:///home/john/Projects/gvpn/src/ui.c:80:0:%%%1:file:///home/john/Projects/gvpn/src/main.c:189:0:%%%1:file:///home/john/Projects/gvpn/src/main.c:172:0:
+Breakpoint=1:file:///home/john/Projects/gvpn/src/main.c:288:0:%%%1:file:///home/john/Projects/gvpn/src/main.c:267:0:%%%1:file:///home/john/Projects/gvpn/src/notify.c:8:0:%%%1:file:///home/john/Projects/gvpn/src/ui.c:80:0:%%%1:file:///home/john/Projects/gvpn/src/main.c:189:0:%%%1:file:///home/john/Projects/gvpn/src/main.c:172:0:%%%1:file:///home/john/work/gvpn/gvpn/src/handlers.c:45:0:
