@@ -82,8 +82,8 @@ void UIInit() {
 	gtk_label_set_text(devlabel,"");
 	gtk_label_set_text(actlabel,"");
 	gtk_label_set_text(dtlabel,"Not connected");
-	
-	graph=GTK_WIDGET(glade_xml_get_widget (gxml, "dra"))->window;
+	GtkNotebook* nbk=GTK_NOTEBOOK(glade_xml_get_widget (gxml, "notebook"));
+	gtk_notebook_remove_page(nbk, 2);
 	
 	strcpy(Errors[0],"Internal error");
 	strcpy(Errors[1],"Connection error.\nServer unavailable.");

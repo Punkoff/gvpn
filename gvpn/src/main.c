@@ -42,6 +42,8 @@ char IPL[256],IPR[256],IPG[256],SSent[256],SRcvd[256];
 int Connected=-1; //-1 = init 0=disconn 1=conn 2=connecting
 char constext[32768]="";
 int fatal=1;
+int ManualDisc = 0;
+
 const char *authors[] =
 {
 	"John Pankov <pankov@adsl.by>",
@@ -54,7 +56,7 @@ const char *authors[] =
 extern int CommClientSocket;
 extern int CommClientStatus;
 extern char CFILE[256],CVPNGW[256],CLogin[256],CPW[256],CSGW[256],CDV[256],CAC[256];
-extern int CAR,CHC;
+extern int CAR,CHC,CDBG;
 
 
 static void ConsoleAdd(char* str){ //Add a line to ConsoleAdd
@@ -111,6 +113,7 @@ void Process(char* cmd) { //Process a message from daemon
 	strcpy(out,cmd);
 	printf("Received: %s\n",cmd);
 	if (out[0]=='d') {
+		if (CDBG==0) return;
 		strcpy(out,cmd+1);
 		strcat(out,"\n");
 		ConsoleAdd(out);
@@ -153,8 +156,10 @@ void Process(char* cmd) { //Process a message from daemon
 	}
 	if (out[0]=='p') {
 		if (out[1]=='0') {
+			ConsoleAdd("Link down\n");
 			gtk_progress_set_value (pbr, 0.0);
 			Connected=0;
+			if (ManualDisc==0 && CAR==1) on_tbConnect_clicked();
 		}
 		if (out[1]=='a') {
 			gtk_progress_set_value (pbr, 33.33);
@@ -162,6 +167,7 @@ void Process(char* cmd) { //Process a message from daemon
 		}
 		if (out[1]=='b') gtk_progress_set_value (pbr, 66.66);
 		if (out[1]=='c') {
+			ConsoleAdd("Connected\n");
 			gtk_progress_set_value (pbr, 100.0);
 			Connected=1;
 			if (strcmp(CAC,"")!=0) popen(CAC, "r"); //TODO: Replace popen with smth...
@@ -255,7 +261,7 @@ int main (int argc, char *argv[]) {
 	wndSettings = glade_xml_get_widget (gxml, "dlgSettings");
 	
 	GetFile (buf, "/icon.png");
-	gtk_window_set_icon_from_file (window,buf,NULL);
+	gtk_window_set_icon_from_file (GTK_WINDOW(window),buf,NULL);
 	
 	gtk_timeout_add (300, (GtkFunction)Connect, NULL); //Run connect AFTER gtk_main started!
 	gtk_timeout_add (2000, (GtkFunction)Stat, NULL);

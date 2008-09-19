@@ -2,7 +2,7 @@ Package: gvpn-daemon
 Version: 0.1
 Architecture: i386
 Maintainer: John Pankov <pankov@adsl.by>
-Installed-Size: 152
+Installed-Size: 156
 Depends: iproute, libc6 (>= 2.4), pptp-linux
 Recommends: gvpn | gvpn-qt
 Section: web

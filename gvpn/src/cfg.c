@@ -1,7 +1,7 @@
 #include "cfg.h"
 
 char CFILE[256],CVPNGW[256],CLogin[256],CPW[256],CSGW[256],CDV[256],CAC[256];
-int CAR=0,CHC=0;
+int CAR=0,CHC=0,CDBG=0;
 
 void CfgLoad() {
 	char s[100];
@@ -32,6 +32,8 @@ void CfgLoad() {
 	CAR=s[0]=='1'?1:0;
 	fgets(s,256,cfg);s[strlen(s)-1]=0;
 	CHC=s[0]=='1'?1:0;
+	fgets(s,256,cfg);s[strlen(s)-1]=0;
+	CDBG=s[0]=='1'?1:0;
 	fclose(cfg);
 }
 
@@ -42,6 +44,6 @@ void CfgSave() {
 	if (cfg<=0) {
 		ErrorBox ("Unable to create config file ~/.gvpn\nCheck file permissions",1);
 	}
-	fprintf(cfg,"%s\n%s\n%s\n%s\n%s\n%s\n%i\n%i\n\n",CVPNGW,CLogin,CPW,CSGW,CDV,CAC,CAR,CHC);
+	fprintf(cfg,"%s\n%s\n%s\n%s\n%s\n%s\n%i\n%i\n%i\n\n",CVPNGW,CLogin,CPW,CSGW,CDV,CAC,CAR,CHC,CDBG);
 	fclose(cfg);
 }

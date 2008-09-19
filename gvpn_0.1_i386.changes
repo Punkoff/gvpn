@@ -1,5 +1,5 @@
 Format: 1.7
-Date: Fri, 12 Sep 2008 15:07:29 +0300
+Date: Thu, 18 Sep 2008 19:09:47 +0300
 Source: gvpn
 Binary: gvpn
 Architecture: source i386
@@ -14,6 +14,6 @@ Changes:
  .
    * Initial release
 Files: 
- 0d7b15aa478c76eccb4b3b8c5bc942b2 247 web optional gvpn_0.1.dsc
- 2d29bc543f2a4487d826fb05c3d6f763 383856 web optional gvpn_0.1.tar.gz
- f966620e894cd263be08627b44cab9ef 38948 web optional gvpn_0.1_i386.deb
+ 79e007fb45077f3812974c2c3f09d8b2 247 web optional gvpn_0.1.dsc
+ 87ffcc52530940fa29c02bf47b3c342b 382894 web optional gvpn_0.1.tar.gz
+ 13048568809588c680bc9bac69cfbafa 39018 web optional gvpn_0.1_i386.deb

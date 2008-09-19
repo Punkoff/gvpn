@@ -27,6 +27,7 @@ void on_tbConnect_clicked() { //Connect
 	CommClientSendString("connect");
 	
 	Connected=2;
+	ManualDisc = 0;
 }
 
 void on_tbDisconnect_clicked() { //Disconnect
@@ -38,6 +39,7 @@ void on_tbDisconnect_clicked() { //Disconnect
 	gtk_label_set_text(dtlabel,"Not connected");
 	Connected=0;
 	ConsoleAdd("Disconnected\n");
+	ManualDisc=1;
 }
 
 void on_tbSettings_clicked() {
@@ -51,6 +53,7 @@ void on_tbSettings_clicked() {
 	gtk_entry_set_text(GTK_ENTRY(glade_xml_get_widget (gxml, "entry4")),CAC);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "chkReconnect")), (CAR==0)?FALSE:TRUE);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "checkbutton2")), (CHC==0)?FALSE:TRUE);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "chkDebug")), (CDBG==0)?FALSE:TRUE);
 	gtk_widget_show (wndSettings);
 }
 
@@ -65,6 +68,7 @@ void on_cmdSetOK_clicked() {
 	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "chkRA")))==FALSE) strcpy(CAC,"");
 	CAR=(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "chkReconnect"))))?1:0;
 	CHC=(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "checkbutton2"))))?1:0;
+	CDBG=(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "chkDebug"))))?1:0;
 	gtk_widget_hide (wndSettings);
 	CfgSave();
 }

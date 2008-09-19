@@ -4,26 +4,36 @@
     <item>
       <attribute id="1221143459" priority="1" done="0" start_date="733296" enddate="99999999" notify="0" endtime="-60" last_edited="1221143459"/>
       <summary>Foolproof</summary>
-      <comment></comment>
-    </item>
-    <item>
-      <attribute id="1221143465" priority="1" done="0" start_date="733296" enddate="99999999" notify="0" endtime="-60" last_edited="1221143465"/>
-      <summary>Utils...?</summary>
-      <comment></comment>
+      <comment/>
     </item>
     <item>
       <attribute id="1221143474" priority="1" done="0" start_date="733296" enddate="99999999" notify="0" endtime="-60" last_edited="1221143474"/>
       <summary>Show Debug option</summary>
-      <comment></comment>
+      <comment/>
     </item>
     <item>
       <attribute id="1220969594" priority="1" done="1" start_date="733294" completed_date="733296" notify="0" last_edited="1221145529"/>
       <summary>About dialog icon</summary>
-      <comment></comment>
+      <comment/>
     </item>
     <item>
       <attribute id="1220969585" priority="1" done="1" start_date="733294" completed_date="733296" notify="0" last_edited="1221145530"/>
       <summary>Main window icon resolving when packaged</summary>
+      <comment/>
+    </item>
+    <item>
+      <attribute id="1221229391" priority="2" done="0" start_date="733297" enddate="99999999" notify="0" endtime="-60" last_edited="1221229391"/>
+      <summary>Settings!</summary>
+      <comment/>
+    </item>
+    <item>
+      <attribute id="1221143465" priority="1" done="1" start_date="733296" completed_date="733297" notify="0" last_edited="1221229398"/>
+      <summary>Utils...?</summary>
+      <comment/>
+    </item>
+    <item>
+      <attribute id="1221483372" priority="1" done="0" start_date="733300" enddate="99999999" notify="0" endtime="-60" last_edited="1221483372"/>
+      <summary>Implement autoreconnect</summary>
       <comment></comment>
     </item>
   </category>
