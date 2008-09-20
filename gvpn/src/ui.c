@@ -14,26 +14,26 @@ char Errors[10][1024];
 void UpdateDataLabel(){
 	char s[256];
 	if (Connected==1){
-		strcpy(s,"Gateway IP: ");
+		strcpy(s,_("Gateway IP: "));
 		strcat(s,IPG);
-		strcat(s,"\nLocal IP: ");
+		strcat(s,_("\nLocal IP: "));
 		strcat(s,IPL);
-		strcat(s,"\nRemote IP: ");
+		strcat(s,_("\nRemote IP: "));
 		strcat(s,IPR);
-		strcat(s,"\nData received: ");
+		strcat(s,_("\nData received: "));
 		strcat(s,SRcvd);
-		strcat(s,"\nData sent: ");
+		strcat(s,_("\nData sent: "));
 		strcat(s,SSent);
 		gtk_label_set_text(dtlabel,s);
-		gtk_label_set_text(stlabel,"Connected");
+		gtk_label_set_text(stlabel,_("Connected"));
 		gtk_label_set_text(actlabel,"Idle");
 	}
 	if (Connected==0) {
-		gtk_label_set_text(stlabel,"Disconnected");
-		gtk_label_set_text(dtlabel,"No info available");
-		gtk_label_set_text(actlabel,"Idle");
+		gtk_label_set_text(stlabel,_("Disconnected"));
+		gtk_label_set_text(dtlabel,_("No info available"));
+		gtk_label_set_text(actlabel,_("Idle"));
 	}
-	if (Connected==2) gtk_label_set_text(stlabel,"Connecting...");
+	if (Connected==2) gtk_label_set_text(stlabel,_("Connecting..."));
 	
 }
 
@@ -82,6 +82,7 @@ void UIInit() {
 	gtk_label_set_text(devlabel,"");
 	gtk_label_set_text(actlabel,"");
 	gtk_label_set_text(dtlabel,"Not connected");
+	
 	GtkNotebook* nbk=GTK_NOTEBOOK(glade_xml_get_widget (gxml, "notebook"));
 	gtk_notebook_remove_page(nbk, 2);
 	

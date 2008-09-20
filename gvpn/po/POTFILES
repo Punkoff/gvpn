@@ -1,2 +1,6 @@
 	../src/main.c \
-	../src/gvpn.glade
+	../src/gvpn.glade \
+	../src/ui.c \
+	../src/cfg.c \
+	../src/handlers.c \
+	../src/notify.c

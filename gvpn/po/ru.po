@@ -1,0 +1,225 @@
+# translation of ru.po to Russian
+# translation of GVPN to Russian
+# GVPN 0.1 Russian translation
+# Copyright (C) 2008 John Pankov
+# This file is distributed under the same license as the PACKAGE package.
+# John Pankov <pankov@adsl.by> 2008
+#
+# John Pankov <pankov@adsl.by>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: ru\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-09-20 16:40+0300\n"
+"PO-Revision-Date: 2008-09-20 16:41+0300\n"
+"Last-Translator: John Pankov <pankov@adsl.by>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../src/gvpn.glade.h:1
+msgid " -"
+msgstr " -"
+
+#: ../src/gvpn.glade.h:2
+msgid "(C) John Pankov, 2008"
+msgstr "(C) Евгений паньков, 2008"
+
+#: ../src/gvpn.glade.h:3
+msgid "<b>Behavior settings</b>"
+msgstr "<b>Настройки поведения</b>"
+
+#: ../src/gvpn.glade.h:4
+msgid "<b>Connection settings</b>"
+msgstr "<b>Настройки соединения</b>"
+
+#: ../src/gvpn.glade.h:5
+msgid "A PPTP client"
+msgstr "Клиент PPTP"
+
+#: ../src/gvpn.glade.h:6
+msgid "About"
+msgstr "О программе"
+
+#: ../src/gvpn.glade.h:7
+msgid "About GVPN"
+msgstr "О GVPN"
+
+#: ../src/gvpn.glade.h:8
+msgid "Auto reconnect"
+msgstr "Пересоединять"
+
+#: ../src/gvpn.glade.h:9
+msgid "Behavior"
+msgstr "Поведение"
+
+#: ../src/gvpn.glade.h:10
+msgid "Connect"
+msgstr "Включить"
+
+#: ../src/gvpn.glade.h:11
+msgid "Connection"
+msgstr "Соединение"
+
+#: ../src/gvpn.glade.h:12
+msgid "Console"
+msgstr "Консоль"
+
+#: ../src/gvpn.glade.h:13
+msgid "Debug messages"
+msgstr "Отладка"
+
+#: ../src/gvpn.glade.h:14
+msgid "Disconnect"
+msgstr "Отключить"
+
+#: ../src/gvpn.glade.h:15 ../src/ui.c:32
+msgid "Disconnected"
+msgstr "Отключено"
+
+#: ../src/gvpn.glade.h:16
+msgid "GVPN"
+msgstr "GVPN"
+
+#: ../src/gvpn.glade.h:17
+msgid "Hide on connect"
+msgstr "Прятать при соединении"
+
+#: ../src/gvpn.glade.h:18
+msgid "Login:"
+msgstr "Логин:"
+
+#: ../src/gvpn.glade.h:19
+msgid "Network device:"
+msgstr "Устройство:"
+
+#: ../src/gvpn.glade.h:20
+msgid "Not connected"
+msgstr "Отключено"
+
+#: ../src/gvpn.glade.h:21
+msgid "Password"
+msgstr "Пароль:"
+
+#: ../src/gvpn.glade.h:22
+msgid "Run on connect:"
+msgstr "Запустить при соед."
+
+#: ../src/gvpn.glade.h:23
+msgid "Settings"
+msgstr "Опции"
+
+#: ../src/gvpn.glade.h:24
+msgid "Specific LAN GW:"
+msgstr "Гейт сети:"
+
+#: ../src/gvpn.glade.h:25
+msgid "Status"
+msgstr "Статус"
+
+#: ../src/gvpn.glade.h:26
+msgid "VPN Gateway IP:"
+msgstr "IP сервера"
+
+#: ../src/gvpn.glade.h:27
+msgid "firefox"
+msgstr "firefox"
+
+#: ../src/gvpn.glade.h:28
+msgid "gtk-about"
+msgstr "gtk-about"
+
+#: ../src/gvpn.glade.h:29
+msgid "gtk-cancel"
+msgstr "gtk-cancel"
+
+#: ../src/gvpn.glade.h:30
+msgid "gtk-connect"
+msgstr "gtk-connect"
+
+#: ../src/gvpn.glade.h:31
+msgid "gtk-disconnect"
+msgstr "gtk-disconnect"
+
+#: ../src/gvpn.glade.h:32
+msgid "gtk-ok"
+msgstr "gtk-ok"
+
+#: ../src/gvpn.glade.h:33
+msgid "gtk-preferences"
+msgstr "gtk-preferences"
+
+#: ../src/gvpn.glade.h:34
+msgid "gtk-quit"
+msgstr "gtk-quit"
+
+#: ../src/gvpn.glade.h:35
+#, fuzzy
+msgid "Правка"
+msgstr "_Правка"
+
+#: ../src/gvpn.glade.h:36
+#, fuzzy
+msgid "Соединение"
+msgstr "_Соединение"
+
+#: ../src/gvpn.glade.h:37
+#, fuzzy
+msgid "Справка"
+msgstr "_Справка"
+
+#: ../src/ui.c:17
+msgid "Gateway IP: "
+msgstr "Сервер: "
+
+#: ../src/ui.c:19
+msgid ""
+"\n"
+"Local IP: "
+msgstr ""
+"\n"
+"Локальный IP: "
+
+#: ../src/ui.c:21
+msgid ""
+"\n"
+"Remote IP: "
+msgstr ""
+"\n"
+"Внешний IP: "
+
+#: ../src/ui.c:23
+msgid ""
+"\n"
+"Data received: "
+msgstr ""
+"\n"
+"Принято: "
+
+#: ../src/ui.c:25
+msgid ""
+"\n"
+"Data sent: "
+msgstr ""
+"\n"
+"Послано: "
+
+#: ../src/ui.c:28
+msgid "Connected"
+msgstr "Соединено"
+
+#: ../src/ui.c:33
+msgid "No info available"
+msgstr "Нет информации "
+
+#: ../src/ui.c:34
+msgid "Idle"
+msgstr " "
+
+#: ../src/ui.c:36
+msgid "Connecting..."
+msgstr "Соединяется..."
+

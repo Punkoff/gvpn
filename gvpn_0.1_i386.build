@@ -4,16 +4,16 @@ dh_testroot
 rm -f build-stamp 
 # Add here commands to clean up after the build process.
 /usr/bin/make distclean
-make[1]: Вход в каталог `/home/john/work/gvpn/gvpn'
+make[1]: Entering directory `/home/john/work/gvpn/gvpn'
 Making distclean in po
-make[2]: Вход в каталог `/home/john/work/gvpn/gvpn/po'
+make[2]: Entering directory `/home/john/work/gvpn/gvpn/po'
 rm -f *.pox gvpn.pot *.old.po cat-id-tbl.tmp
 rm -f .intltool-merge-cache
 rm -f Makefile Makefile.in POTFILES stamp-it
 rm -f *.mo *.msg *.cat *.cat.m *.gmo
-make[2]: Выход из каталога `/home/john/work/gvpn/gvpn/po'
+make[2]: Leaving directory `/home/john/work/gvpn/gvpn/po'
 Making distclean in src
-make[2]: Вход в каталог `/home/john/work/gvpn/gvpn/src'
+make[2]: Entering directory `/home/john/work/gvpn/gvpn/src'
  rm -f gvpn gvpn
 rm -rf .libs _libs
 rm -f *.o
@@ -23,31 +23,31 @@ test -z "" || rm -f
 rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
 rm -rf ./.deps
 rm -f Makefile
-make[2]: Выход из каталога `/home/john/work/gvpn/gvpn/src'
+make[2]: Leaving directory `/home/john/work/gvpn/gvpn/src'
 Making distclean in .
-make[2]: Вход в каталог `/home/john/work/gvpn/gvpn'
+make[2]: Entering directory `/home/john/work/gvpn/gvpn'
 rm -rf .libs _libs
 rm -f *.lo
 test -z "" || rm -f 
 rm -f config.h stamp-h1
 rm -f libtool
 rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
-make[2]: Выход из каталога `/home/john/work/gvpn/gvpn'
+make[2]: Leaving directory `/home/john/work/gvpn/gvpn'
 rm -f config.status config.cache config.log configure.lineno config.status.lineno
 rm -f Makefile
-make[1]: Выход из каталога `/home/john/work/gvpn/gvpn'
+make[1]: Leaving directory `/home/john/work/gvpn/gvpn'
 rm -f config.sub config.guess
 dh_clean 
  dpkg-source -b gvpn
-parsechangelog/debian: предупреждение: ./gvpn/debian/changelog(l5): неправильный формат строки завершения
+parsechangelog/debian: warning: ./gvpn/debian/changelog(l5): badly formatted trailer line
 LINE:  -- John Pankov <pankov@adsl.by>
-parsechangelog/debian: предупреждение: ./gvpn/debian/changelog(l6): найден символ eof где ожидалось more change data or trailer
+parsechangelog/debian: warning: ./gvpn/debian/changelog(l6): found eof where expected more change data or trailer
 Use of uninitialized value in pattern match (m//) at /usr/share/perl5/Dpkg/Fields.pm line 201, <STDIN> line 6.
 Use of uninitialized value in pattern match (m//) at /usr/share/perl5/Dpkg/Fields.pm line 201, <STDIN> line 6.
-dpkg-source: предупреждение: неизвестное информационное поле 'Error' во входных данных в получена версия changelog
-dpkg-source: предупреждение: каталог исходников './gvpn' не в виде <пакет исходников>-<оригинальная версия> 'gvpn-0.1'
-dpkg-source: сборка gvpn в gvpn_0.1.tar.gz
-dpkg-source: сборка gvpn в gvpn_0.1.dsc
+dpkg-source: warning: unknown information field 'Error' in input data in parsed version of changelog
+dpkg-source: warning: source directory './gvpn' is not <sourcepackage>-<upstreamversion> 'gvpn-0.1'
+dpkg-source: building gvpn in gvpn_0.1.tar.gz
+dpkg-source: building gvpn in gvpn_0.1.dsc
  debian/rules build
 dh_testdir
 # Add here commands to configure the package.
@@ -236,36 +236,37 @@ config.status: executing po/stamp-it commands
 dh_testdir
 # Add here commands to compile the package.
 /usr/bin/make
-make[1]: Вход в каталог `/home/john/work/gvpn/gvpn'
+make[1]: Entering directory `/home/john/work/gvpn/gvpn'
 /usr/bin/make  all-recursive
-make[2]: Вход в каталог `/home/john/work/gvpn/gvpn'
+make[2]: Entering directory `/home/john/work/gvpn/gvpn'
 Making all in src
-make[3]: Вход в каталог `/home/john/work/gvpn/gvpn/src'
+make[3]: Entering directory `/home/john/work/gvpn/gvpn/src'
 i486-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DPACKAGE_LOCALE_DIR=\""/usr/share/locale"\" -DPACKAGE_SRC_DIR=\""."\" -DPACKAGE_DATA_DIR=\""/usr/share"\" -DORBIT2=1 -pthread -I/usr/include/libgnome-2.0 -I/usr/include/orbit-2.0 -I/usr/include/gconf/2 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libbonobo-2.0 -I/usr/include/bonobo-activation-2.0 -I/usr/include/libgnomeui-2.0 -I/usr/include/libart-2.0 -I/usr/include/gnome-keyring-1 -I/usr/include/libbonoboui-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gtk-2.0 -I/usr/include/libxml2 -I/usr/include/pango-1.0 -I/usr/include/gail-1.0 -I/usr/include/freetype2 -I/usr/include/atk-1.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/libglade-2.0    -Wall -g  -MT main.o -MD -MP -MF .deps/main.Tpo -c -o main.o main.c
-main.c: В функции ‘main’
-main.c:258: предупреждение: passing argument 1 of ‘gtk_window_set_icon_from_file’ from incompatible pointer type
 mv -f .deps/main.Tpo .deps/main.Po
 i486-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DPACKAGE_LOCALE_DIR=\""/usr/share/locale"\" -DPACKAGE_SRC_DIR=\""."\" -DPACKAGE_DATA_DIR=\""/usr/share"\" -DORBIT2=1 -pthread -I/usr/include/libgnome-2.0 -I/usr/include/orbit-2.0 -I/usr/include/gconf/2 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libbonobo-2.0 -I/usr/include/bonobo-activation-2.0 -I/usr/include/libgnomeui-2.0 -I/usr/include/libart-2.0 -I/usr/include/gnome-keyring-1 -I/usr/include/libbonoboui-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gtk-2.0 -I/usr/include/libxml2 -I/usr/include/pango-1.0 -I/usr/include/gail-1.0 -I/usr/include/freetype2 -I/usr/include/atk-1.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/libglade-2.0    -Wall -g  -MT cfg.o -MD -MP -MF .deps/cfg.Tpo -c -o cfg.o cfg.c
-cfg.c: В функции ‘CfgLoad’
-cfg.c:16: предупреждение: implicit declaration of function ‘ErrorBox’
+cfg.c: In function ‘CfgLoad’:
+cfg.c:16: warning: implicit declaration of function ‘ErrorBox’
 mv -f .deps/cfg.Tpo .deps/cfg.Po
 i486-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DPACKAGE_LOCALE_DIR=\""/usr/share/locale"\" -DPACKAGE_SRC_DIR=\""."\" -DPACKAGE_DATA_DIR=\""/usr/share"\" -DORBIT2=1 -pthread -I/usr/include/libgnome-2.0 -I/usr/include/orbit-2.0 -I/usr/include/gconf/2 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libbonobo-2.0 -I/usr/include/bonobo-activation-2.0 -I/usr/include/libgnomeui-2.0 -I/usr/include/libart-2.0 -I/usr/include/gnome-keyring-1 -I/usr/include/libbonoboui-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gtk-2.0 -I/usr/include/libxml2 -I/usr/include/pango-1.0 -I/usr/include/gail-1.0 -I/usr/include/freetype2 -I/usr/include/atk-1.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/libpng12 -I/usr/include/pixman-1 -I/usr/include/libglade-2.0    -Wall -g  -MT comm.o -MD -MP -MF .deps/comm.Tpo -c -o comm.o comm.c
-comm.c: В функции ‘CommServerAccept’
-comm.c:50: предупреждение: pointer targets in passing argument 3 of ‘accept’ differ in signedness
+comm.c: In function ‘CommServerAccept’:
+comm.c:50: warning: pointer targets in passing argument 3 of ‘accept’ differ in signedness
 mv -f .deps/comm.Tpo .deps/comm.Po
 /bin/bash ../libtool --tag=CC   --mode=link i486-linux-gnu-gcc -Wall -g  -Wl,--export-dynamic -Wl,-z,defs -o gvpn main.o cfg.o comm.o -pthread -lgnomeui-2 -lSM -lICE -lbonoboui-2 -lgnomevfs-2 -lgnomecanvas-2 -lgnome-2 -lpopt -lbonobo-2 -lbonobo-activation -lORBit-2 -lart_lgpl_2 -lgconf-2 -lgthread-2.0 -lrt -lglade-2.0 -lgtk-x11-2.0 -lxml2 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0   
 mkdir .libs
 i486-linux-gnu-gcc -Wall -g -Wl,--export-dynamic -Wl,-z -Wl,defs -o gvpn main.o cfg.o comm.o -pthread  /usr/lib/libgnomeui-2.so -lSM -lICE /usr/lib/libbonoboui-2.so /usr/lib/libgnomevfs-2.so /usr/lib/libgnomecanvas-2.so /usr/lib/libgnome-2.so /usr/lib/libpopt.so /usr/lib/libbonobo-2.so /usr/lib/libbonobo-activation.so /usr/lib/libORBit-2.so /usr/lib/libart_lgpl_2.so /usr/lib/libgconf-2.so /usr/lib/libgthread-2.0.so -lrt /usr/lib/libglade-2.0.so /usr/lib/libgtk-x11-2.0.so /usr/lib/libxml2.so /usr/lib/libgdk-x11-2.0.so /usr/lib/libatk-1.0.so /usr/lib/libgdk_pixbuf-2.0.so -lm /usr/lib/libpangocairo-1.0.so /usr/lib/libpango-1.0.so /usr/lib/libcairo.so /usr/lib/libgobject-2.0.so /usr/lib/libgmodule-2.0.so -ldl /usr/lib/libglib-2.0.so  
-make[3]: Выход из каталога `/home/john/work/gvpn/gvpn/src'
+make[3]: Leaving directory `/home/john/work/gvpn/gvpn/src'
 Making all in po
-make[3]: Вход в каталог `/home/john/work/gvpn/gvpn/po'
-make[3]: Цель `all' не требует выполнения команд.
-make[3]: Выход из каталога `/home/john/work/gvpn/gvpn/po'
-make[3]: Вход в каталог `/home/john/work/gvpn/gvpn'
-make[3]: Цель `all-am' не требует выполнения команд.
-make[3]: Выход из каталога `/home/john/work/gvpn/gvpn'
-make[2]: Выход из каталога `/home/john/work/gvpn/gvpn'
-make[1]: Выход из каталога `/home/john/work/gvpn/gvpn'
+make[3]: Entering directory `/home/john/work/gvpn/gvpn/po'
+file=`echo ru | sed 's,.*/,,'`.gmo \
+	  && rm -f $file && /usr/bin/msgfmt -o $file ru.po
+file=`echo en | sed 's,.*/,,'`.gmo \
+	  && rm -f $file && /usr/bin/msgfmt -o $file en.po
+make[3]: Leaving directory `/home/john/work/gvpn/gvpn/po'
+make[3]: Entering directory `/home/john/work/gvpn/gvpn'
+make[3]: Nothing to be done for `all-am'.
+make[3]: Leaving directory `/home/john/work/gvpn/gvpn'
+make[2]: Leaving directory `/home/john/work/gvpn/gvpn'
+make[1]: Leaving directory `/home/john/work/gvpn/gvpn'
 #docbook-to-man debian/gvpn.sgml > gvpn.1
 touch build-stamp
  fakeroot debian/rules binary
@@ -275,10 +276,10 @@ dh_clean -k
 dh_installdirs
 # Add here commands to install the package into debian/gvpn.
 /usr/bin/make DESTDIR=/home/john/work/gvpn/gvpn/debian/gvpn install
-make[1]: Вход в каталог `/home/john/work/gvpn/gvpn'
+make[1]: Entering directory `/home/john/work/gvpn/gvpn'
 Making install in src
-make[2]: Вход в каталог `/home/john/work/gvpn/gvpn/src'
-make[3]: Вход в каталог `/home/john/work/gvpn/gvpn/src'
+make[2]: Entering directory `/home/john/work/gvpn/gvpn/src'
+make[3]: Entering directory `/home/john/work/gvpn/gvpn/src'
 test -z "/usr/bin" || /bin/mkdir -p "/home/john/work/gvpn/gvpn/debian/gvpn/usr/bin"
   /bin/bash ../libtool   --mode=install /usr/bin/install -c 'gvpn' '/home/john/work/gvpn/gvpn/debian/gvpn/usr/bin/gvpn'
 /usr/bin/install -c gvpn /home/john/work/gvpn/gvpn/debian/gvpn/usr/bin/gvpn
@@ -288,12 +289,12 @@ test -z "/usr/share/gvpn" || /bin/mkdir -p "/home/john/work/gvpn/gvpn/debian/gvp
  /usr/bin/install -c -m 644 'icon_c.png' '/home/john/work/gvpn/gvpn/debian/gvpn/usr/share/gvpn/icon_c.png'
  /usr/bin/install -c -m 644 'icon_d.png' '/home/john/work/gvpn/gvpn/debian/gvpn/usr/share/gvpn/icon_d.png'
 test -z "/usr/share/gvpn" || /bin/mkdir -p "/home/john/work/gvpn/gvpn/debian/gvpn/usr/share/gvpn"
-make[3]: Выход из каталога `/home/john/work/gvpn/gvpn/src'
-make[2]: Выход из каталога `/home/john/work/gvpn/gvpn/src'
+make[3]: Leaving directory `/home/john/work/gvpn/gvpn/src'
+make[2]: Leaving directory `/home/john/work/gvpn/gvpn/src'
 Making install in po
-make[2]: Вход в каталог `/home/john/work/gvpn/gvpn/po'
+make[2]: Entering directory `/home/john/work/gvpn/gvpn/po'
 /bin/sh /home/john/work/gvpn/gvpn/install-sh -d /home/john/work/gvpn/gvpn/debian/gvpn/usr/share/locale
-linguas=""; \
+linguas="ru en "; \
 	for lang in $linguas; do \
 	  dir=/home/john/work/gvpn/gvpn/debian/gvpn/usr/share/locale/$lang/LC_MESSAGES; \
 	  /bin/sh /home/john/work/gvpn/gvpn/install-sh -d $dir; \
@@ -319,21 +320,23 @@ linguas=""; \
 	    fi; \
 	  fi; \
 	done
-make[2]: Выход из каталога `/home/john/work/gvpn/gvpn/po'
-make[2]: Вход в каталог `/home/john/work/gvpn/gvpn'
-make[3]: Вход в каталог `/home/john/work/gvpn/gvpn'
-make[3]: Цель `install-exec-am' не требует выполнения команд.
+installing ru.gmo as /home/john/work/gvpn/gvpn/debian/gvpn/usr/share/locale/ru/LC_MESSAGES/gvpn.mo
+installing en.gmo as /home/john/work/gvpn/gvpn/debian/gvpn/usr/share/locale/en/LC_MESSAGES/gvpn.mo
+make[2]: Leaving directory `/home/john/work/gvpn/gvpn/po'
+make[2]: Entering directory `/home/john/work/gvpn/gvpn'
+make[3]: Entering directory `/home/john/work/gvpn/gvpn'
+make[3]: Nothing to be done for `install-exec-am'.
 test -z "/usr/share/applications" || /bin/mkdir -p "/home/john/work/gvpn/gvpn/debian/gvpn/usr/share/applications"
  /usr/bin/install -c -m 644 'src/GVPN.desktop' '/home/john/work/gvpn/gvpn/debian/gvpn/usr/share/applications/GVPN.desktop'
-make[3]: Выход из каталога `/home/john/work/gvpn/gvpn'
-make[2]: Выход из каталога `/home/john/work/gvpn/gvpn'
-make[1]: Выход из каталога `/home/john/work/gvpn/gvpn'
+make[3]: Leaving directory `/home/john/work/gvpn/gvpn'
+make[2]: Leaving directory `/home/john/work/gvpn/gvpn'
+make[1]: Leaving directory `/home/john/work/gvpn/gvpn'
 dh_testdir
 dh_testroot
 dh_installchangelogs ChangeLog
-parsechangelog/debian: предупреждение:     debian/changelog(l5): неправильный формат строки завершения
+parsechangelog/debian: warning:     debian/changelog(l5): badly formatted trailer line
 LINE:  -- John Pankov <pankov@adsl.by>
-parsechangelog/debian: предупреждение:     debian/changelog(l6): найден символ eof где ожидалось more change data or trailer
+parsechangelog/debian: warning:     debian/changelog(l6): found eof where expected more change data or trailer
 Use of uninitialized value in pattern match (m//) at /usr/share/perl5/Dpkg/Fields.pm line 201, <STDIN> line 6.
 Use of uninitialized value in pattern match (m//) at /usr/share/perl5/Dpkg/Fields.pm line 201, <STDIN> line 6.
 dh_installdocs
@@ -346,58 +349,57 @@ dh_compress
 dh_fixperms
 dh_installdeb
 dh_shlibdeps
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libSM.so.6 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libICE.so.6 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libbonoboui-2.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libgnomevfs-2.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libgnomecanvas-2.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libpopt.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libbonobo-2.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libbonobo-activation.so.4 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libORBit-2.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libart_lgpl_2.so.2 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libgconf-2.so.4 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libgthread-2.0.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с librt.so.1 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libxml2.so.2 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libgdk-x11-2.0.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libatk-1.0.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libgdk_pixbuf-2.0.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libm.so.6 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libpangocairo-1.0.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libcairo.so.2 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libgmodule-2.0.so.0 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libdl.so.2 (не используется ни один из её символов).
-dpkg-shlibdeps: предупреждение: debian/gvpn/usr/bin/gvpn не должен линковаться с libglib-2.0.so.0 (не используется ни один из её символов).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libSM.so.6 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libICE.so.6 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libbonoboui-2.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libgnomevfs-2.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libgnomecanvas-2.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libpopt.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libbonobo-2.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libbonobo-activation.so.4 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libORBit-2.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libart_lgpl_2.so.2 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libgconf-2.so.4 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libgthread-2.0.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with librt.so.1 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libxml2.so.2 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libgdk-x11-2.0.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libatk-1.0.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libgdk_pixbuf-2.0.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libm.so.6 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libpangocairo-1.0.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libcairo.so.2 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libgmodule-2.0.so.0 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libdl.so.2 (it uses none of its symbols).
+dpkg-shlibdeps: warning: debian/gvpn/usr/bin/gvpn shouldn't be linked with libglib-2.0.so.0 (it uses none of its symbols).
 dh_gencontrol
-parsechangelog/debian: предупреждение:     debian/changelog(l5): неправильный формат строки завершения
+parsechangelog/debian: warning:     debian/changelog(l5): badly formatted trailer line
 LINE:  -- John Pankov <pankov@adsl.by>
-parsechangelog/debian: предупреждение:     debian/changelog(l6): найден символ eof где ожидалось more change data or trailer
+parsechangelog/debian: warning:     debian/changelog(l6): found eof where expected more change data or trailer
 Use of uninitialized value in pattern match (m//) at /usr/share/perl5/Dpkg/Fields.pm line 201, <STDIN> line 6.
 Use of uninitialized value in pattern match (m//) at /usr/share/perl5/Dpkg/Fields.pm line 201, <STDIN> line 6.
-dpkg-gencontrol: предупреждение: неизвестное информационное поле 'Error' во входных данных в получена версия changelog
-dpkg-gencontrol: предупреждение: неизвестная подстановочная переменная ${misc:Depends}
+dpkg-gencontrol: warning: unknown information field 'Error' in input data in parsed version of changelog
+dpkg-gencontrol: warning: unknown substitution variable ${misc:Depends}
 dh_md5sums
 dh_builddeb
-dpkg-deb: сборка пакета gvpn в файл ../gvpn_0.1_i386.deb.
+dpkg-deb: building package `gvpn' in `../gvpn_0.1_i386.deb'.
  dpkg-genchanges
-parsechangelog/debian: предупреждение:     debian/changelog(l5): неправильный формат строки завершения
+parsechangelog/debian: warning:     debian/changelog(l5): badly formatted trailer line
 LINE:  -- John Pankov <pankov@adsl.by>
-parsechangelog/debian: предупреждение:     debian/changelog(l6): найден символ eof где ожидалось more change data or trailer
+parsechangelog/debian: warning:     debian/changelog(l6): found eof where expected more change data or trailer
 Use of uninitialized value in pattern match (m//) at /usr/share/perl5/Dpkg/Fields.pm line 201, <STDIN> line 6.
 Use of uninitialized value in pattern match (m//) at /usr/share/perl5/Dpkg/Fields.pm line 201, <STDIN> line 6.
-parsechangelog/debian: предупреждение:     debian/changelog(l5): неправильный формат строки завершения
+parsechangelog/debian: warning:     debian/changelog(l5): badly formatted trailer line
 LINE:  -- John Pankov <pankov@adsl.by>
-parsechangelog/debian: предупреждение:     debian/changelog(l6): найден символ eof где ожидалось more change data or trailer
-dpkg-genchanges: предупреждение: неизвестное информационное поле 'Error' во входных данных в получена версия changelog
-dpkg-genchanges: в закачку включён весь исходный код
+parsechangelog/debian: warning:     debian/changelog(l6): found eof where expected more change data or trailer
+dpkg-genchanges: warning: unknown information field 'Error' in input data in parsed version of changelog
+dpkg-genchanges: including full source code in upload
 dpkg-buildpackage (debuild emulation): full upload; Debian-native package (full source is included)
 Now running lintian...
 E: gvpn_0.1_i386.changes: bad-distribution-in-changes-file hardy
 W: gvpn source: debian-rules-ignores-make-clean-error line 48
 W: gvpn source: out-of-date-standards-version 3.7.2 (current is 3.7.3)
 W: gvpn: binary-without-manpage usr/bin/gvpn
-W: gvpn: package-contains-empty-directory usr/share/locale/
 W: gvpn: package-contains-empty-directory usr/sbin/
 W: gvpn: copyright-lists-upstream-authors-with-dh_make-boilerplate
 E: gvpn: description-starts-with-package-name
@@ -406,10 +408,10 @@ W: gvpn: syntax-error-in-debian-changelog line 6 "found eof where expected more 
 Finished running lintian.
 Now signing changes and any dsc files...
  signfile gvpn_0.1.dsc John Pankov <pankov@adsl.by>
-gpg: ВНИМАНИЕ: небезопасные права доступа к файлу конфигурации `/home/john/.gnupg/gpg.conf'
-gpg: ВНИМАНИЕ: небезопасные права доступа к каталогу содержащему файл конфигурации `/home/john/.gnupg/gpg.conf'
-gpg: ВНИМАНИЕ: небезопасные права доступа к файлу конфигурации `/home/john/.gnupg/gpg.conf'
-gpg: ВНИМАНИЕ: небезопасные права доступа к каталогу содержащему файл конфигурации `/home/john/.gnupg/gpg.conf'
-gpg: пропущено "John Pankov <pankov@adsl.by>": секретный ключ не найден
-gpg: [stdin]: clearsign failed: секретный ключ не найден
+gpg: WARNING: unsafe permissions on configuration file `/home/john/.gnupg/gpg.conf'
+gpg: WARNING: unsafe enclosing directory permissions on configuration file `/home/john/.gnupg/gpg.conf'
+gpg: WARNING: unsafe permissions on configuration file `/home/john/.gnupg/gpg.conf'
+gpg: WARNING: unsafe enclosing directory permissions on configuration file `/home/john/.gnupg/gpg.conf'
+gpg: skipped "John Pankov <pankov@adsl.by>": secret key not available
+gpg: [stdin]: clearsign failed: secret key not available
 debsign: gpg error occurred!  Aborting....

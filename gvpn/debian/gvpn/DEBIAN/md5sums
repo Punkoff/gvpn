@@ -1,11 +1,13 @@
-21bc1b850d2258f00bc49e280aeaff74  usr/bin/gvpn
+661ed172c920ed4d7568a195243f6fcf  usr/bin/gvpn
 16bc10460e546c7776d1ec9f8286fde5  usr/share/menu/gvpn
 d41283ab348f57d06d6d6cc477c5bc45  usr/share/applications/GVPN.desktop
 b4c17a6d894a615357c72536be03dbd0  usr/share/doc/gvpn/changelog.Debian.gz
 92da9a6ba7546af284f2c707e1c53521  usr/share/doc/gvpn/changelog.gz
 bb8ae768ab208107df2eba0d9348f214  usr/share/doc/gvpn/copyright
-4d6e46150f60c56436f0354c8852471b  usr/share/doc/gvpn/TODO.tasks
+fd096f32561b61a624e909eb6ab626d2  usr/share/doc/gvpn/TODO.tasks
 62a486e4442a89df6c0d8f3c26fc1bbe  usr/share/gvpn/icon_c.png
 de4e576b284692a3ebd9715f499d73cc  usr/share/gvpn/icon.png
-2162d599473355606c8552ce9be16591  usr/share/gvpn/gvpn.glade
+586753eb5d76d8c165ece74f4824a299  usr/share/gvpn/gvpn.glade
 288865dca4bf8421c47db6a50c77bb16  usr/share/gvpn/icon_d.png
+0c20a21d5bfa9cd8a8c509f8fcaf84ad  usr/share/locale/ru/LC_MESSAGES/gvpn.mo
+a3bd0efa40ab7262ec2b3df4df9ec430  usr/share/locale/en/LC_MESSAGES/gvpn.mo
