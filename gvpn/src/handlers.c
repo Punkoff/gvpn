@@ -70,6 +70,25 @@ void on_cmdSetOK_clicked() {
 	CHC=(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "checkbutton2"))))?1:0;
 	CDBG=(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget (gxml, "chkDebug"))))?1:0;
 	gtk_widget_hide (wndSettings);
+	if (strlen(CVPNGW)==0)
+	{
+		ErrorBox ("Please enter PPTP gateway address!",0);
+		CfgLoad();
+		return;
+	}
+	if (strlen(CLogin)==0)
+	{
+		ErrorBox ("Please enter login!",0);
+		CfgLoad();
+		return;
+	}
+	if (strlen(CPW)==0)
+	{
+		ErrorBox ("Please enter password!",0);
+		CfgLoad();
+		return;
+	}
+
 	CfgSave();
 }
 
