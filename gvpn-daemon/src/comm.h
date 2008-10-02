@@ -3,7 +3,8 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
- 
+
+
 int CommServerInit(char* addr);
 int CommServerAccept();
 void CommServerClose();

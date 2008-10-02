@@ -22,7 +22,6 @@ void PPTPError(char* str) { //Send error message
 	CommServerSendString(buf);
 }
 void PPTPNewClient() { //Notify newly connected client about situation
-	PPTPError ("Internal error");
 	if (PPTPStatus==0) CommServerSendString ("sd"); 
 	else {
 		CommServerSendString ("sc");
@@ -256,6 +255,7 @@ void PPTPTerminate() {
 }
 
 void PPTPProcess(char* cmd){
+	printf("%s\n", cmd);
 	if (mode!=0){
 		switch (mode) {
 			case 1: strcpy(PPTPGateway,cmd);

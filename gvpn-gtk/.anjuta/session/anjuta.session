@@ -1,0 +1,12 @@
+
+[Anjuta]
+Maximized=1
+Geometry=1243x936+37+27
+
+[File Loader]
+Files=file:///home/john/work/gvpn/gvpn-gtk/src/comm-client.hpp#32%%%file:///home/john/work/gvpn/gvpn-gtk/src/comm-client.cpp#33%%%file:///home/john/work/gvpn/gvpn-gtk/src/gvpn-core.hpp#1%%%file:///home/john/work/gvpn/gvpn-gtk/src/gvpn-core.cpp#48%%%file:///home/john/work/gvpn/gvpn-gtk/src/gvpn-config.hpp#16%%%file:///home/john/work/gvpn/gvpn-gtk/src/gvpn-config.cpp#28%%%file:///home/john/work/gvpn/gvpn-gtk/src/gvpn-ui.hpp#55%%%file:///home/john/work/gvpn/gvpn-gtk/src/main.cc#46%%%file:///home/john/work/gvpn/gvpn-gtk/src/gvpn.glade
+
+[Execution]
+Program arguments=
+Run in terminal=2
+Last selected uri=file:///home/john/work/gvpn/gvpn-gtk/src/gvpn_gtk

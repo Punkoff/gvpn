@@ -39,7 +39,8 @@ cp -f /usr/share/misc/config.guess config.guess
 checking for a BSD-compatible install... /usr/bin/install -c
 checking whether build environment is sane... yes
 checking for a thread-safe mkdir -p... /bin/mkdir -p
-checking for gawk... gawk
+checking for gawk... no
+checking for mawk... mawk
 checking whether make sets $(MAKE)... yes
 checking whether to enable maintainer-specific portions of Makefiles... no
 checking for style of include used by make... GNU
